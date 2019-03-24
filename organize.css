@@ -16,3 +16,22 @@
 	width: 40%;
 	max-width: 200px;
 }
+
+.footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	color: white;
+	text-align: center;
+	height: 30px
+}
+
+.title-font {
+	font-family: 'Source Code Pro', monospace;
+	text-align: center;
+	left: 0px;
+	right: 0px;
+	margin: auto;
+	border-bottom: 10px;
+}
