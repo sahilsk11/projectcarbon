@@ -17,6 +17,18 @@
 	max-width: 200px;
 }
 
+.app-logo {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 30%;
+	bottom: 50%;
+	margin: auto;
+	width: 30%;
+	min-width: 150px;
+	max-width: 350px;
+}
+
 .footer {
 	position: fixed;
 	left: 0;
