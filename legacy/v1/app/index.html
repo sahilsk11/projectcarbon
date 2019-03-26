@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
+		<title>project carbon</title>
+		<link href="../img/logo.png" rel="icon">
+		<link href="../css/skeleton.css" rel="stylesheet">
+		<link href="../css/normalize.css" rel="stylesheet">
+		<link href="organize.css" rel="stylesheet">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+		<!--smooth scroll-->
+		<script>
+			//smooth scroll
+			$(document).ready(function(){
+			  // Add smooth scrolling to all links
+			  $("a").on('click', function(event) {
+
+			    // Make sure this.hash has a value before overriding default behavior
+			    if (this.hash !== "") {
+			      // Prevent default anchor click behavior
+			      event.preventDefault();
+
+			      // Store hash
+			      var hash = this.hash;
+
+			      // Using jQuery's animate() method to add smooth page scroll
+			      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+			      $('html, body').animate({
+			        scrollTop: $(hash).offset().top
+			      }, 800, function(){
+			   
+			        // Add hash (#) to URL when done scrolling (default click behavior)
+			        window.location.hash = hash;
+			      });
+			    } // End if
+			  });
+			});
+		</script>
+
+		<script>
+			function openModal(id) {
+				console.log(id);
+				document.getElementById(id).style.display = "block";
+			}
+
+			function closeModal(id) {
+				document.getElementById(id).style.display = "none";
+			}
+		</script>
+	</head>
+
+	<body class="body">
+		<div class="section">
+			<div class="title-container">
+				<img src="../img/logo.svg" class="logo" alt="">
+				<h1 class="title">project carbon</h1>
+				<h4 class="title subtitle">welcome to the future of college campuses.</h4>
+				<a href="#about"><button class="btn black-btn">Let's go</button></a>
+			</div>
+		</div>
+
+		<div id="about" class="section black-section">
+			<h1 class="title section-title white">College campuses are outdated.</h1>
+			<img src="https://image.flaticon.com/icons/svg/167/167707.svg" class="section1-icon" alt="">
+			<div class="about-description-container">
+				<p class="description white">
+					IoT technology is revolutionizing workplaces and homes around the world. Yet university buildings haven't truly capitilized on the benefits of the system.
+				</p>
+				<a href="#solution"><button class="btn white-btn">Let's fix it!</button></a>
+			</div>
+		</div>
+
+		<div id="solution" class="section">
+			<h1 class="title section-title">the project carbon suite</h1>
+			<h4 class="title subtitle">plug-in intelligence for every part of the college system.</h4>
+			<hr class="custom-hr">
+			<div class="container products">
+				<div class="row">
+					<div class="four columns product" onclick="openModal('co2');">
+						<img src="../img/co2.svg" class="product-img" alt="">
+						<h4 class="title subtitle">Co2 Sensor</h4>
+					</div>
+
+					<div class="four columns product" onclick="openModal('id');">
+						<img src="../img/id.svg" class="product-img" alt="">
+						<h4 class="title subtitle">ID Security Systems</h4>
+					</div>
+
+					<div class="four columns product" onclick="openModal('door');">
+						<img src="../img/door.svg" class="product-img">
+						<h4 class="title subtitle">DoorSensor</h4>
+					</div>
+				</div>
+
+				<div class="row br">
+					<div class="twelve columns">
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="four columns product"  onclick="openModal('light');">
+						<img src="../img/light.svg" class="product-img" alt="">
+						<h4 class="title subtitle">LightSensor</h4>
+					</div>
+
+					<div class="four columns product" onclick="openModal('window');">
+						<img src="../img/window.svg" class="product-img" alt="">
+						<h4 class="title subtitle">WindowSensor</h4>
+					</div>
+
+					<div class="four columns product" onclick="openModal('stove');">
+						<img src="../img/stove.svg" class="product-img" alt="">
+						<h4 class="title subtitle link">StoveSensor</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--<footer class="footer">
+			<p class="title-font white">Interested? I'm looking for members!</p>
+			<a class="title-font link" href="mailto:projectcarbon.io@gmail.com">projectcarbon.io@gmail.com</a>
+		</footer>-->
+
+		<!--modal-->
+		<div id="co2" class="modal">
+		<!-- Modal content -->
+			<div class="modal-content">
+				<span class="close" onclick="closeModal('co2');">&times;</span>
+				<img src="https://image.flaticon.com/icons/svg/1435/1435182.svg" class="product-img" alt="">
+				<h4 class="title subtitle">Co2 Sensor</h4>
+				<hr class="custom-hr">
+				<p class="description">
+					A recent study conducted by the National Institute of Environmental Health Sciences (NIEHS) concluded that demanding abilities like strategic skills and crisis response were reduced remarkably when there was only a slight change of 100 ppm in the CO2 level. The study shows clearly that managing tasks that are more demanding becomes much harder with the increased CO2 levels, which doesn't only plummet the efficiency of your employees but may lead to disappointing or even faulty business decisions. And how expensive is that?
+				</p>	
+			</div>
+		</div>
+
+		<div id="id" class="modal">
+			<!-- Modal content -->
+			<div class="modal-content">
+				<span class="close" onclick="closeModal('id');">&times;</span>
+				<img src="../img/id.svg" class="product-img" alt="">
+				<h4 class="title subtitle">ID Security Systems</h4>
+				<hr class="custom-hr">
+				<p class="description">
+					Forget tailgating at building security checkpoints. Smart facial recognition allows residents to securely enter and alert building securities when unknown guests are in the building.
+				</p>	
+			</div>
+		</div>
+		<div id="door" class="modal">
+			<!-- Modal content -->
+			<div class="modal-content">
+				<span class="close" onclick="closeModal('door');">&times;</span>
+				<img src="../img/door.svg" class="product-img" alt="">
+				<h4 class="title subtitle">DoorSensor</h4>
+				<hr class="custom-hr">
+				<p class="description">
+					Residents often leave doors unlocked for a variety of reasons, whether they forget keys, want to help roommates, or simply forget. Change it with intelligent door locking mechanisms.
+				</p>	
+			</div>
+		</div>
+		<div id="light" class="modal">
+			<!-- Modal content -->
+			<div class="modal-content">
+				<span class="close" onclick="closeModal('light');">&times;</span>
+				<img src="../img/light.svg" class="product-img" alt="">
+				<h4 class="title subtitle">LightSensor</h4>
+				<hr class="custom-hr">
+				<p class="description">
+					Smart light systems that detect when residents are in the room and automatically conserve energy based on usage.
+				</p>	
+			</div>
+		</div>
+		<div id="window" class="modal">
+			<!-- Modal content -->
+			<div class="modal-content">
+				<span class="close" onclick="closeModal('window');">&times;</span>
+				<img src="../img/window.svg" class="product-img" alt="">
+				<h4 class="title subtitle">WindowSensor</h4>
+				<hr class="custom-hr">
+				<p class="description">
+					Reduce HVAC energy wastage with window sensing technology. Automatically turns off system when window is detected as open.
+				</p>	
+			</div>
+		</div>
+		<div id="stove" class="modal">
+			<!-- Modal content -->
+			<div class="modal-content">
+				<span class="close" onclick="closeModal('stove');">&times;</span>
+				<img src="../img/stove.svg" class="product-img" alt="">
+				<h4 class="title subtitle">StoveSensor</h4>
+				<hr class="custom-hr">
+				<p class="description">
+					Never leave the stove on again. Smart sensing for fire and alerts if the gas is left on for extended period of time.
+				</p>	
+			</div>
+		</div>
+
+	</body>
+</html>

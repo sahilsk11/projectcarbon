@@ -1,0 +1,49 @@
+.title {
+	font-size: 40px;
+	text-align: center;
+	font-family: 'Source Code Pro', monospace;
+}
+
+.subtitle {
+	font-size: 20px;
+}
+
+.logo {
+	padding-top: 10%;
+	position: relative;
+	display: block;
+	margin: 0px auto;
+	width: 40%;
+	max-width: 200px;
+}
+
+.app-logo {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 30%;
+	bottom: 50%;
+	margin: auto;
+	width: 30%;
+	min-width: 150px;
+	max-width: 350px;
+}
+
+.footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	color: white;
+	text-align: center;
+	height: 30px
+}
+
+.title-font {
+	font-family: 'Source Code Pro', monospace;
+	text-align: center;
+	left: 0px;
+	right: 0px;
+	margin: auto;
+	border-bottom: 10px;
+}
