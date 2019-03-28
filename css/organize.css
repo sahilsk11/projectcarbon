@@ -12,10 +12,15 @@
 	padding-left: 5%;
 	padding-right: 5%;
 }
+@media only screen and (max-width: 450px) {
+  .title {
+    font-size: 30px;
+  }
+}
 
 .title-font {
 	font-family: 'Source Code Pro', monospace;
-	font-weight: 500;
+	font-size: 20px;
 }
 
 .link {
@@ -23,7 +28,7 @@
 }
 
 .section-title {
-	padding-top: 10%;
+	padding-top: 5%;
 }
 
 .subtitle {
@@ -45,10 +50,11 @@
 	left: 0px;
 	right: 0px;
 	margin: 0px auto;
-	width: 30%;
-	max-width: 300px;
-	min-width: 200px;
+	width: 70%;
+	max-width: 600px;
+	min-width: 300px;
 	padding-top: 10px;
+	padding-bottom: 3%;
 }
 
 .app-logo {
@@ -81,8 +87,8 @@
 }
 
 .white-btn {
-	background-color: white;
-	color: black;
+	background-color: black;
+	color: white;
 	margin-top: 10%;
 	left: 0px;
 	right: 0px;
@@ -103,22 +109,26 @@
 }
 
 .black-section {
-	background-color: black;
+	background-color: white;
 }
 
 .white {
-	color: white;
+	color: black;
 }
 
 .about-description-container {
+	margin: 0px auto;
+	left: 0px;
+	right: 0px;
 	padding: 5%;
-	padding-top: 50px;
+	padding-top: 2%;
 	text-align: center;
 	bottom: 10%;
+	max-width: 800px;
 }
 
 .description {
-	font-family: 'Source Code Pro', monospace;
+	font-family: 'Open Sans', sans-serif;
 	font-size: 20px;
 }
 

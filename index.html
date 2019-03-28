@@ -4,6 +4,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 		<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
 		<title>project carbon</title>
 		<link href="img/logo.png" rel="icon">
 		<link href="css/skeleton.css" rel="stylesheet">
@@ -61,18 +63,22 @@
 				<a href="#about"><button class="btn black-btn">Let's go</button></a>
 			</div>
 		</div>
-
+		<hr>
 		<div id="about" class="section black-section">
-			<h1 class="title section-title white">College campuses are outdated.</h1>
-			<img src="https://image.flaticon.com/icons/svg/167/167707.svg" class="section1-icon" alt="">
+			<h1 class="title section-title white">Running a college isn't easy.</h1>
+			
+			<h4 class="title subtitle white">Let's make it efficient.</h1>
+			<img src="img/message.png" class="section1-icon" alt="">
+			<hr class="custom-hr">
 			<div class="about-description-container">
 				<p class="description white">
-					IoT technology is revolutionizing workplaces and homes around the world. Yet university buildings haven't truly capitilized on the benefits of the system.
+					Managing maintenance, cost analysis, construction, and facilities is a full-time job and then some. But Project Carbon is here to help.<br><br>	
+					We offer a suite of sensors to help university buildings gather data about expensive systems, such as HVAC, electricity usage, and water usage. Receive automatic alerts when anomalies are detected, and fix issues proactively instead of reactively.
 				</p>
-				<a href="#solution"><button class="btn white-btn">Let's fix it!</button></a>
+				<a href="#solution"><button class="btn white-btn">Let's do it!</button></a>
 			</div>
 		</div>
-
+		<hr>
 		<div id="solution" class="section">
 			<h1 class="title section-title">the project carbon suite</h1>
 			<h4 class="title subtitle">plug-in intelligence for every part of the college system.</h4>
@@ -84,14 +90,14 @@
 						<h4 class="title subtitle">Co2 Sensor</h4>
 					</div>
 
-					<div class="four columns product" onclick="openModal('id');">
-						<img src="img/id.svg" class="product-img" alt="">
-						<h4 class="title subtitle">ID Security Systems</h4>
+					<div class="four columns product" onclick="openModal('water');">
+						<img src="img/pipe.svg" class="product-img" alt="">
+						<h4 class="title subtitle">Water Sensor</h4>
 					</div>
 
-					<div class="four columns product" onclick="openModal('door');">
-						<img src="img/door.svg" class="product-img">
-						<h4 class="title subtitle">DoorSensor</h4>
+					<div class="four columns product" onclick="openModal('wayfinding');">
+						<img src="img/wayfinding.svg" class="product-img">
+						<h4 class="title subtitle">Wayfinding/Geolocation</h4>
 					</div>
 				</div>
 
@@ -103,17 +109,17 @@
 				<div class="row">
 					<div class="four columns product"  onclick="openModal('light');">
 						<img src="img/light.svg" class="product-img" alt="">
-						<h4 class="title subtitle">LightSensor</h4>
+						<h4 class="title subtitle">Light Sensor</h4>
 					</div>
 
-					<div class="four columns product" onclick="openModal('window');">
-						<img src="img/window.svg" class="product-img" alt="">
-						<h4 class="title subtitle">WindowSensor</h4>
+					<div class="four columns product" onclick="openModal('asset');">
+						<img src="img/box.svg" class="product-img" alt="">
+						<h4 class="title subtitle">Asset Tracking</h4>
 					</div>
 
-					<div class="four columns product" onclick="openModal('stove');">
-						<img src="img/stove.svg" class="product-img" alt="">
-						<h4 class="title subtitle link">StoveSensor</h4>
+					<div class="four columns product" onclick="openModal('dash');">
+						<img src="img/dashboard.svg" class="product-img" alt="">
+						<h4 class="title subtitle link">Sensor Dashboard</h4>
 					</div>
 				</div>
 			</div>
@@ -132,33 +138,33 @@
 				<img src="img/co2.svg" class="product-img" alt="">
 				<h4 class="title subtitle">Co2 Sensor</h4>
 				<hr class="custom-hr">
-				<p class="description">
-					A recent study conducted by the National Institute of Environmental Health Sciences (NIEHS) concluded that demanding abilities like strategic skills and crisis response were reduced remarkably when there was only a slight change of 100 ppm in the CO2 level. The study shows clearly that managing tasks that are more demanding becomes much harder with the increased CO2 levels, which doesn't only plummet the efficiency of your employees but may lead to disappointing or even faulty business decisions. And how expensive is that?
+				<p class="title-font">
+					High carbon dioxide levels are not only correlated with reduced concentration in meeting rooms, but are also a key indicator of "stuffiness" in a room. Use this data to control HVAC systems intelligently.
 				</p>	
 			</div>
 		</div>
 
-		<div id="id" class="modal">
+		<div id="water" class="modal">
 			<!-- Modal content -->
 			<div class="modal-content">
-				<span class="close" onclick="closeModal('id');">&times;</span>
-				<img src="img/id.svg" class="product-img" alt="">
+				<span class="close" onclick="closeModal('water');">&times;</span>
+				<img src="img/pipe.svg" class="product-img" alt="">
 				<h4 class="title subtitle">ID Security Systems</h4>
 				<hr class="custom-hr">
-				<p class="description">
-					Forget tailgating at building security checkpoints. Smart facial recognition allows residents to securely enter and alert building securities when unknown guests are in the building.
+				<p class="title-font">
+					Monitor water usage down to the room. Actively receive alerts about fluctuations and respond to broken systems proactively.
 				</p>	
 			</div>
 		</div>
-		<div id="door" class="modal">
+		<div id="wayfinding" class="modal">
 			<!-- Modal content -->
 			<div class="modal-content">
-				<span class="close" onclick="closeModal('door');">&times;</span>
-				<img src="img/door.svg" class="product-img" alt="">
-				<h4 class="title subtitle">DoorSensor</h4>
+				<span class="close" onclick="closeModal('wayfinding');">&times;</span>
+				<img src="img/wayfinding.svg" class="product-img" alt="">
+				<h4 class="title subtitle">Water Sensor</h4>
 				<hr class="custom-hr">
-				<p class="description">
-					Residents often leave doors unlocked for a variety of reasons, whether they forget keys, want to help roommates, or simply forget. Change it with intelligent door locking mechanisms.
+				<p class="title-font">
+					Keep track of population density and locations of guests (or visitors) with active geolocation.
 				</p>	
 			</div>
 		</div>
@@ -167,34 +173,34 @@
 			<div class="modal-content">
 				<span class="close" onclick="closeModal('light');">&times;</span>
 				<img src="img/light.svg" class="product-img" alt="">
-				<h4 class="title subtitle">LightSensor</h4>
+				<h4 class="title subtitle">Wayfinding/Geolocation</h4>
 				<hr class="custom-hr">
-				<p class="description">
+				<p class="title-font">
 					Smart light systems that detect when residents are in the room and automatically conserve energy based on usage.
 				</p>	
 			</div>
 		</div>
-		<div id="window" class="modal">
+		<div id="asset" class="modal">
 			<!-- Modal content -->
 			<div class="modal-content">
-				<span class="close" onclick="closeModal('window');">&times;</span>
-				<img src="img/window.svg" class="product-img" alt="">
-				<h4 class="title subtitle">WindowSensor</h4>
+				<span class="close" onclick="closeModal('asset');">&times;</span>
+				<img src="img/box.svg" class="product-img" alt="">
+				<h4 class="title subtitle">Asset Tracking</h4>
 				<hr class="custom-hr">
-				<p class="description">
-					Reduce HVAC energy wastage with window sensing technology. Automatically turns off system when window is detected as open.
+				<p class="title-font">
+					Logisitics run campuses. Find where packages are being transported in real-time, including deliveries to dining courts and residence halls.
 				</p>	
 			</div>
 		</div>
-		<div id="stove" class="modal">
+		<div id="dash" class="modal">
 			<!-- Modal content -->
 			<div class="modal-content">
-				<span class="close" onclick="closeModal('stove');">&times;</span>
-				<img src="img/stove.svg" class="product-img" alt="">
-				<h4 class="title subtitle">StoveSensor</h4>
+				<span class="close" onclick="closeModal('dash');">&times;</span>
+				<img src="img/dashboard.svg" class="product-img" alt="">
+				<h4 class="title subtitle">Sensor Dashboard</h4>
 				<hr class="custom-hr">
-				<p class="description">
-					Never leave the stove on again. Smart sensing for fire and alerts if the gas is left on for extended period of time.
+				<p class="title-font">
+					A beautiful dashboard to tie it all together. No fuss with pages of data that make no sense. Our intelligent system will parse data in real-time, and give you the updates you need to know as they come.
 				</p>	
 			</div>
 		</div>
