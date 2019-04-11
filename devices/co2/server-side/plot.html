@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <title>CO2 Values</title>
+
+        <link href="css/organize.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="js/XHRequest.js"></script>
+
+        <script>
+
+            function sendChartRequest(values) {
+                XHRequest.createRequest({
+                    success: setData,
+                    params: {
+                        command: "getchart",
+                        values: values
+                    },
+                    url: "plot.py"
+                });
+            }
+
+            function resetChart() {
+                var num = document.getElementById("values").value;
+                sendChartRequest(num);
+            }
+
+            function setData(xhr, xhrConfig) {
+                var co2Levels;
+                var timeValues;
+                var response = JSON.parse(xhr.responseText);
+                co2Levels = response[0];
+                timeValues = response[1];
+                constructChart(co2Levels, timeValues);
+            }
+
+            function constructChart(co2Levels, timeValues) {
+                var ctx = document.getElementById('myChart');
+                var myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: timeValues,
+                        datasets: [{
+                            label: "CO2 Levels (ppm)",
+                            data: co2Levels,
+                            backgroundColor: "rgba(0, 0, 255, 0.3)"
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            yAxes: [{
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: "CO2 Levels (ppm)"
+                                },
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }],
+                            xAxis: [{
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: "Time"
+                                }
+                            }]
+                        }
+                    }
+                });
+            }
+        </script>
+    </head>
+
+    <body onload="sendChartRequest(1000)">
+        <div class="graph-container">
+            <canvas id="myChart" aria-label="Hello ARIA World" role="img"></canvas>
+        </div>
+        <div class="button-group">
+            <input id="values">
+            <button onclick="resetChart()">Change values</button>
+        </div>
+    </body>
+</html>
