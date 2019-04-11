@@ -8,7 +8,6 @@ print("Content-type: application/json\n\n")
 file_handle = "data.csv"
 
 
-
 def parse_csv(values):
     f = open(file_handle, "r")
 
@@ -29,7 +28,7 @@ def parse_csv(values):
 
 def insert_value(co2, time):
     f = open(file_handle, "a")
-    f.write(time + "," + co2)
+    f.write(time + "," + co2 + "\n")
     f.close()
     sucess = True
     return success
@@ -40,9 +39,10 @@ values = form.getfirst("values", "")
 co2 = form.getfirst("co2")
 time = form.getfirst("time")
 
-data = parse_csv(int(values))
+
 
 if (command == "getchart"):
+    data = parse_csv(int(values))
     j = json.dumps(data)
     print(j)
 
