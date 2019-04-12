@@ -20,9 +20,26 @@
                 });
             }
 
-            function resetChart() {
-                var num = document.getElementById("values").value;
-                sendChartRequest(num);
+            function initChart(override) {
+                var url = new URL(window.location.href);
+                var values = url.searchParams.get("values");
+                if (values == null)
+                {
+                    values = 1000;
+                } else {
+                    document.getElementById("values").value = values;
+                }
+                sendChartRequest(values);
+            }
+
+            function changeChart(override) {
+                if (override != null) {
+                    window.location = window.location.pathname;
+                } else {
+                    values = document.getElementById("values").value;
+                    var url = window.location.pathname;
+                    window.location = url + '?values=' + values;
+                }
             }
 
             function setData(xhr, xhrConfig) {
@@ -43,12 +60,13 @@
                         datasets: [{
                             label: "CO2 Levels (ppm)",
                             data: co2Levels,
-                            backgroundColor: "rgba(0, 0, 255, 0.3)"
+                            backgroundColor: "rgba(0, 0, 0, 0.7)"
                         }]
                     },
                     options: {
                         responsive: true,
                         scales: {
+                            color: "white",
                             yAxes: [{
                                 scaleLabel: {
                                     display: true,
@@ -59,9 +77,11 @@
                                 }
                             }],
                             xAxis: [{
+                                gridLines: {
+                                    display: false
+                                },
                                 scaleLabel: {
                                     display: true,
-                                    labelString: "Time"
                                 }
                             }]
                         }
@@ -71,13 +91,17 @@
         </script>
     </head>
 
-    <body onload="sendChartRequest(1000)">
+    <body onload="initChart()" class="dark">
+        <h1 class="title-font">CO2 Data</h1>
+        <h3 class="title-font subtitle">Location: Dorm room</h3>
         <div class="graph-container">
             <canvas id="myChart" aria-label="Hello ARIA World" role="img"></canvas>
         </div>
         <div class="button-group">
-            <input id="values">
-            <button onclick="resetChart()">Change values</button>
+            <label class="form-label">How many values to display?</label><br>
+            <input id="values" class="value-input"><br><br>
+            <button class="btn" onclick="changeChart()">Change</button>
+            <button class="btn" onclick="changeChart(true)">Reset</button>
         </div>
     </body>
 </html>

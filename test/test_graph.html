@@ -1,0 +1,33 @@
+<canvas id="myChart" width="400px" height="400px" aria-label="Hello ARIA World" role="img"></canvas>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<script>
+var ctx = document.getElementById('myChart');
+
+var co2Levels = {{co2_levels}};
+var timeValues = {{time_values}};
+
+var myChart = new Chart(ctx, {
+    type: 'line',
+
+    data: {
+        labels: times,
+        datasets: [{
+
+            data: data,
+            backgroundColor: "rgba(0, 0, 255, 0.3)"
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>

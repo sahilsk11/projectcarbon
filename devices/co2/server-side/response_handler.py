@@ -17,12 +17,15 @@ def parse_csv(values):
     time_values = []
 
     parsed_data = raw_data.split("\n")
+    if (parsed_data[-1] == ''):
+        values += 1
     if (values > len(parsed_data)):
-        values = len(parsed_data    )
+        values = len(parsed_data)
     for i in range(len(parsed_data) - values, len(parsed_data)):
-        parsed_data[i] = parsed_data[i].split(",")
-        time_values.append(parsed_data[i][0])
-        co2_levels.append(int(parsed_data[i][1]))
+        if (parsed_data[i] != ''):
+            parsed_data[i] = parsed_data[i].split(",")
+            time_values.append(parsed_data[i][0])
+            co2_levels.append(int(parsed_data[i][1]))
     #print(time_values)
     return [co2_levels, time_values]
 
