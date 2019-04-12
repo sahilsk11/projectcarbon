@@ -3,9 +3,9 @@
         <title>CO2 Values</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        
+
         <link href="css/organize.css" rel="stylesheet">
-        <link href="dashboard.svg" rel="icon">
+        <link href="dashboard.png" rel="icon">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="js/XHRequest.js"></script>
@@ -40,8 +40,12 @@
                     window.location = window.location.pathname;
                 } else {
                     values = document.getElementById("values").value;
-                    var url = window.location.pathname;
-                    window.location = url + '?values=' + values;
+                    if (values == "") {
+                        changeChart(true);
+                    } else {
+                        var url = window.location.pathname;
+                        window.location = url + '?values=' + values;
+                    }
                 }
             }
 
