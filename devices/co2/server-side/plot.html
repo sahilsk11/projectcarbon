@@ -68,8 +68,14 @@
 
             function constructChart(timeValues, co2Levels, tempLevels) {
                 var ctx = document.getElementById('myChart');
+                var type;
+                if (timeValues.length < 5) {
+                    type = 'bar';
+                } else {
+                    type = 'line';
+                }
                 var myChart = new Chart(ctx, {
-                    type: 'line',
+                    type: 'bar',
                     data: {
                         labels: timeValues,
                         datasets: [{
@@ -111,10 +117,6 @@
     <body onload="initChart()" class="dark">
         <h1 class="title-font">CO2 Data</h1>
         <h3 class="title-font subtitle">Location: Dorm room</h3>
-
-        <div class="side-nav">
-
-        </div>
 
         <div class="graph-container">
             <canvas id="myChart" aria-label="Hello ARIA World" role="img"></canvas>

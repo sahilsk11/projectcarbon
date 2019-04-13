@@ -2,12 +2,13 @@ import requests
 import datetime
 
 def upload(current_time_str, co2, temp):
-    r = requests.post('http://projectcarbon.io/devices/co2/server-side/response_handler.py',
+    r = requests.get('http://projectcarbon.io/devices/co2/server-side/response_handler.py',
                       data={"command": "insert", "co2": co2, "time": current_time_str, "temperature": temp,
                             "test": False})
     print("----------------")
     print("Uploaded at " + current_time_str)
     print("Status code: " + str(r.status_code))
+    print(r.text)
     print("----------------")
 
 if (__name__ == "__main__"):

@@ -19,8 +19,8 @@ sgp30.set_iaq_baseline(0x8973, 0x8aae)
 def read_data():
     co2 = sgp30.eCO2
     TVOC = sgp30.TVOC
-    if TVOC == 0:
-        return None
+    #if TVOC == 0:
+    #    return None
     return co2
 
 if (__name__ == "__main__"):

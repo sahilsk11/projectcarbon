@@ -17,8 +17,8 @@
       <file leaf-file-name="response_handler.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server-side/response_handler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="47" column="41" lean-forward="true" selection-start-line="47" selection-start-column="41" selection-end-line="47" selection-end-column="41" />
+            <state relative-caret-position="490">
+              <caret line="64" column="27" lean-forward="true" selection-start-line="64" selection-start-column="27" selection-end-line="64" selection-end-column="27" />
               <folding>
                 <element signature="e#19#29#0" expanded="true" />
               </folding>
@@ -36,8 +36,8 @@
       <file leaf-file-name="read_co2.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/device-scripts/read_co2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="33" column="32" lean-forward="true" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
+            <state relative-caret-position="300">
+              <caret line="20" column="21" lean-forward="true" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -48,8 +48,8 @@
       <file leaf-file-name="read_temp.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/device-scripts/read_temp.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="43" lean-forward="true" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="43" />
+            <state relative-caret-position="345">
+              <caret line="23" column="26" lean-forward="true" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -60,11 +60,8 @@
       <file leaf-file-name="collect_data.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/device-scripts/collect_data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="81" lean-forward="true" selection-start-line="16" selection-start-column="81" selection-end-line="16" selection-end-column="81" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="30">
+              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
             </state>
           </provider>
         </entry>
@@ -73,7 +70,7 @@
         <entry file="file://$PROJECT_DIR$/device-scripts/upload_data.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="270">
-              <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
+              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -98,6 +95,7 @@
       <find>shelve</find>
       <find>GPIO</find>
       <find>time</find>
+      <find>int(</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -113,11 +111,11 @@
         <option value="$PROJECT_DIR$/device-scripts/data_upload.py" />
         <option value="$PROJECT_DIR$/device-scripts/read_data.py" />
         <option value="$PROJECT_DIR$/device-scripts/dht11.py" />
-        <option value="$PROJECT_DIR$/device-scripts/read_co2.py" />
-        <option value="$PROJECT_DIR$/device-scripts/collect_data.py" />
-        <option value="$PROJECT_DIR$/device-scripts/read_temp.py" />
-        <option value="$PROJECT_DIR$/server-side/response_handler.py" />
         <option value="$PROJECT_DIR$/device-scripts/upload_data.py" />
+        <option value="$PROJECT_DIR$/server-side/response_handler.py" />
+        <option value="$PROJECT_DIR$/device-scripts/read_temp.py" />
+        <option value="$PROJECT_DIR$/device-scripts/collect_data.py" />
+        <option value="$PROJECT_DIR$/device-scripts/read_co2.py" />
       </list>
     </option>
   </component>
@@ -390,35 +388,15 @@
     <entry file="file://$PROJECT_DIR$/server-side/plot.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/device-scripts/read_temp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="43" lean-forward="true" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/device-scripts/data.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4817" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/device-scripts/read_co2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="32" lean-forward="true" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server-side/response_handler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="47" column="41" lean-forward="true" selection-start-line="47" selection-start-column="41" selection-end-line="47" selection-end-column="41" />
+        <state relative-caret-position="490">
+          <caret line="64" column="27" lean-forward="true" selection-start-line="64" selection-start-column="27" selection-end-line="64" selection-end-column="27" />
           <folding>
             <element signature="e#19#29#0" expanded="true" />
           </folding>
@@ -427,10 +405,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/device-scripts/collect_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="81" lean-forward="true" selection-start-line="16" selection-start-column="81" selection-end-line="16" selection-end-column="81" />
+        <state relative-caret-position="30">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device-scripts/read_co2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="21" lean-forward="true" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
           <folding>
-            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device-scripts/read_temp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="26" lean-forward="true" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -438,7 +433,7 @@
     <entry file="file://$PROJECT_DIR$/device-scripts/upload_data.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
-          <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>

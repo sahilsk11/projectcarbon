@@ -7,6 +7,7 @@ print("Content-type: application/json\n\n")
 
 file_handle = "data.csv"
 
+log = open("test.log", "a")
 
 def parse_csv(values):
     f = open(file_handle, "r")
@@ -29,14 +30,15 @@ def parse_csv(values):
             time_values.append(time_stamp)
 
             co2_reading = parsed_data[i][1]
-            if (co2_reading == "None"):
+            log.write(co2_reading)
+            if (co2_reading == None or co2_reading == "None"):
                 co2_reading = None
             else:
                 co2_reading = int(co2_reading)
             co2_levels.append(int(co2_reading))
 
             temperature = parsed_data[i][2]
-            if (temperature == "None"):
+            if (temperature == "None" or temperature == None):
                 temperature = None
             else:
                 temperature = int(temperature)
@@ -47,7 +49,7 @@ def parse_csv(values):
 
 def insert_value(time, co2, temperature):
     f = open(file_handle, "a")
-    f.write(time + "," + co2 + "," + temperature + "\n")
+    f.write(time + "," + str(co2) + "," + str(temperature) + "\n")
     f.close()
     success = True
     return success
