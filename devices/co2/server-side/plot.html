@@ -35,12 +35,19 @@
                 sendChartRequest(values);
             }
 
+            function validateInput(values) {
+                if (isNaN(values)) {
+                    return false;
+                }
+                return true;
+            }
+
             function changeChart(override) {
                 if (override != null) {
                     window.location = window.location.pathname;
                 } else {
                     values = document.getElementById("values").value;
-                    if (values == "") {
+                    if (!validateInput(values)) {
                         changeChart(true);
                     } else {
                         var url = window.location.pathname;
@@ -53,24 +60,27 @@
                 var co2Levels;
                 var timeValues;
                 var response = JSON.parse(xhr.responseText);
-                co2Levels = response[0];
-                timeValues = response[1];
-                constructChart(co2Levels, timeValues);
+                timeValues = response[0];
+                co2Levels = response[1];
+                tempLevels = response[2];
+                constructChart(timeValues, co2Levels, tempLevels);
             }
 
-            function constructChart(co2Levels, timeValues) {
+            function constructChart(timeValues, co2Levels, tempLevels) {
                 var ctx = document.getElementById('myChart');
                 var myChart = new Chart(ctx, {
-                    type: 'bar',
+                    type: 'line',
                     data: {
                         labels: timeValues,
                         datasets: [{
                             label: "CO2 Levels (ppm)",
                             data: co2Levels,
-                            backgroundColor: "rgba(0, 0, 0, 0.7)"
+                            backgroundColor: "rgba(0, 0, 0, 0.7)",
+                            pointRadius: 2
                         }]
                     },
                     options: {
+                        backgroundColor: "blue",
                         responsive: true,
                         scales: {
                             color: "white",
@@ -101,6 +111,11 @@
     <body onload="initChart()" class="dark">
         <h1 class="title-font">CO2 Data</h1>
         <h3 class="title-font subtitle">Location: Dorm room</h3>
+
+        <div class="side-nav">
+
+        </div>
+
         <div class="graph-container">
             <canvas id="myChart" aria-label="Hello ARIA World" role="img"></canvas>
         </div>

@@ -14,6 +14,7 @@ def parse_csv(values):
     raw_data = f.read()
     f.close()
     co2_levels = []
+    temp_levels = []
     time_values = []
 
     parsed_data = raw_data.split("\n")
@@ -24,16 +25,31 @@ def parse_csv(values):
     for i in range(len(parsed_data) - values, len(parsed_data)):
         if (parsed_data[i] != ''):
             parsed_data[i] = parsed_data[i].split(",")
-            time_values.append(parsed_data[i][0])
-            co2_levels.append(int(parsed_data[i][1]))
-    #print(time_values)
-    return [co2_levels, time_values]
+            time_stamp = parsed_data[i][0]
+            time_values.append(time_stamp)
 
-def insert_value(co2, time):
+            co2_reading = parsed_data[i][1]
+            if (co2_reading == "None"):
+                co2_reading = None
+            else:
+                co2_reading = int(co2_reading)
+            co2_levels.append(int(co2_reading))
+
+            temperature = parsed_data[i][2]
+            if (temperature == "None"):
+                temperature = None
+            else:
+                temperature = int(temperature)
+            temp_levels.append(temperature)
+
+    #print(time_values)
+    return [time_values, co2_levels, temp_levels]
+
+def insert_value(time, co2, temperature):
     f = open(file_handle, "a")
-    f.write(time + "," + co2 + "\n")
+    f.write(time + "," + co2 + "," + temperature + "\n")
     f.close()
-    sucess = True
+    success = True
     return success
 
 form = cgi.FieldStorage()
@@ -41,7 +57,7 @@ command = form.getfirst("command", "")
 values = form.getfirst("values", "")
 co2 = form.getfirst("co2")
 time = form.getfirst("time")
-
+temperature = form.getfirst("temperature")
 
 
 if (command == "getchart"):
@@ -50,7 +66,7 @@ if (command == "getchart"):
     print(j)
 
 elif (command == "insert"):
-    success = insert_value(co2, time)
+    success = insert_value(time, co2, temperature)
     d = {"success": success}
     j = json.dumps(d)
     print(j)
