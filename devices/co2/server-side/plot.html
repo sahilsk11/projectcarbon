@@ -4,7 +4,11 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
+
         <link href="css/organize.css" rel="stylesheet">
+        <link href="css/simple-grid.css" rel="stylesheet">
+
         <link href="dashboard.png" rel="icon">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -14,7 +18,7 @@
 
             function sendChartRequest(values) {
                 XHRequest.createRequest({
-                    success: setData,
+                    success: parseChartData,
                     params: {
                         command: "getchart",
                         values: values
@@ -23,7 +27,7 @@
                 });
             }
 
-            function initChart(override) {
+            function getValueCount(override) {
                 var url = new URL(window.location.href);
                 var values = url.searchParams.get("values");
                 if (values == null)
@@ -56,31 +60,48 @@
                 }
             }
 
-            function setData(xhr, xhrConfig) {
+            function parseChartData(xhr, xhrConfig) {
                 var co2Levels;
                 var timeValues;
                 var response = JSON.parse(xhr.responseText);
                 timeValues = response[0];
                 co2Levels = response[1];
                 tempLevels = response[2];
-                constructChart(timeValues, co2Levels, tempLevels);
+                constructCharts(timeValues, co2Levels, tempLevels);
             }
 
-            function constructChart(timeValues, co2Levels, tempLevels) {
-                var ctx = document.getElementById('co2');
+            function constructCharts(timeValues, co2Levels, tempLevels) {
                 var type;
+                Chart.defaults.global.defaultFontFamily = "Source Code Pro";
                 if (timeValues.length < 5) {
                     type = 'bar';
                 } else {
                     type = 'line';
                 }
-                var myChart = new Chart(ctx, {
+                var co2GraphData = addLineGraph(type, timeValues, co2Levels, 'Carbon Dioxide', 'CO2 (ppm)', 1000);
+                var ctx = document.getElementById('co2');
+                var co2Graph = new Chart(ctx, co2GraphData);
+
+                var temperatureGraphData = addLineGraph(type, timeValues, tempLevels, 'Temperature', 'Temperature (F)', 100);
+                ctx = document.getElementById('temperature');
+                var temperatureGraph = new Chart(ctx, temperatureGraphData);
+
+                var co2AnalysisGraphData = generateDoughnut();
+                ctx = document.getElementById('co2Analysis');
+                var co2AnalysisGraph = new Chart(ctx, co2AnalysisGraphData);
+
+                var tempAnalysisGraphData = generateDoughnut();
+                ctx = document.getElementById('tempAnalysis');
+                var tempAnalysisGraph = new Chart(ctx, tempAnalysisGraphData);
+            }
+
+            function addLineGraph(type, timeValues, yValues, title, yLabel, suggestedMax) {
+                return {
                     type: type,
                     data: {
                         labels: timeValues,
                         datasets: [{
-                            label: "CO2 Levels (ppm)",
-                            data: co2Levels,
+                            data: yValues,
                             borderColor: "rgba(0, 0, 0, 1)",
                             backgroundColor: "rgba(0, 0, 0, 0.3)",
                             pointRadius: 2
@@ -89,15 +110,29 @@
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
+                        layout: {
+                            padding: {
+                                top: 20
+                            }
+                        },
+                        title: {
+                            display: false,
+                            text: title,
+                            fontSize: 20,
+                            position: 'top',
+                        },
+                        legend: {
+                            display: false
+                        },
                         scales: {
                             color: "white",
                             yAxes: [{
                                 scaleLabel: {
                                     display: true,
-                                    labelString: "CO2 Levels (ppm)"
+                                    labelString: yLabel
                                 },
                                 ticks: {
-                                    suggestedMax: 1000,
+                                    suggestedMax: suggestedMax,
                                     beginAtZero: true
                                 }
                             }],
@@ -111,67 +146,79 @@
                             }]
                         }
                     }
-                });
+                }
+            }
 
-                ctx = document.getElementById('temperature');
-                var myChart1 = new Chart(ctx, {
-                    type: type,
+            function generateDoughnut() {
+                var colors = ['rgba(200, 0, 0, 0.8)','rgba(0, 0, 0, 1)','rgba(0, 150, 0, 0.7)',];
+                return {
+                    type: 'pie',
                     data: {
-                        labels: timeValues,
                         datasets: [{
-                            label: "Temperature (F)",
-                            data: tempLevels,
-                            borderColor: "rgba(255, 0, 0, 1)",
-                            backgroundColor: "rgba(175, 0, 0, 0.3)",
-                            pointRadius: 2,
-                            spanGaps: true
-                        }]
+                            data: [33, 33, 100],
+                            backgroundColor: colors
+                        }],
+                        labels: [
+                            'Red',
+                            'Yellow',
+                            'Blue'
+                        ]
                     },
                     options: {
-                        maintainAspectRatio: false,
                         responsive: true,
-                        scales: {
-                            color: "white",
-                            yAxes: [{
-                                scaleLabel: {
-                                    display: true,
-                                    labelString: "CO2 Levels (ppm)"
-                                },
-                                ticks: {
-                                    suggestedMax: 100,
-                                    beginAtZero: true
-                                }
-                            }],
-                            xAxis: [{
-                                gridLines: {
-                                    display: false
-                                },
-                                scaleLabel: {
-                                    display: true,
-                                }
-                            }]
-                        }
+                        maintainAspectRatio: false,
+                        layout: {
+                            padding: {
+                                bottom: 10
+                            }
+                        },
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'Health',
+                            fontSize: 20,
+                            position: 'top',
+                        },
+                        cutoutPercentage: 55,
                     }
-                });
+                }
             }
         </script>
     </head>
 
-    <body onload="initChart()" class="dark">
-        <h1 class="title-font">CO2 and Temperature Data</h1>
-        <h3 class="title-font subtitle">Location: Dorm room</h3>
+    <body onload="getValueCount()" class="no-margin">
+        <h3 class="title-font">Location: Dorm</h3>
+        <h3 class="title-font">Last Update: unknown</h3>
 
-        <div class="graph-container">
-            <canvas id="co2" aria-label="Hello ARIA World" role="img"></canvas>
+        <div class="custom-container">
+            <div class="row metric-box">
+                <h3 class="title-font metric-title co2-theme">Carbon Dioxide</h3>
+                <div class="col-4 analysis-container">
+                    <canvas id="co2Analysis" aria-label="Hello ARIA World" role="img"></canvas>
+                </div>
+                <div class="col-8 graph-container">
+                    <canvas id="co2" aria-label="Hello ARIA World" role="img"></canvas>
+                </div>
+            </div>
         </div>
 
-        <div class="graph-container">
-            <canvas id="temperature" aria-label="Hello ARIA World" role="img"></canvas>
+        <div class="custom-container">
+            <div class="row metric-box">
+                <h3 class="title-font metric-title temp-theme">Temperature</h3>
+                <div class="col-4 analysis-container">
+                    <canvas id="tempAnalysis" aria-label="Hello ARIA World" role="img"></canvas>
+                </div>
+                <div class="col-8 graph-container">
+                    <canvas id="temperature" aria-label="Hello ARIA World" role="img"></canvas>
+                </div>
+            </div>
         </div>
 
         <div class="button-group">
             <label class="form-label">How many values to display?</label><br>
-            <input id="values" class="value-input"><br><br>
+            <input id="values" autocomplete="off" class="value-input"><br><br>
             <button class="btn" onclick="changeChart()">Change</button>
             <button class="btn" onclick="changeChart(true)">Reset</button>
         </div>
