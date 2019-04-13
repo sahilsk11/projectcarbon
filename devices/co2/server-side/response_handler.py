@@ -35,7 +35,7 @@ def parse_csv(values):
                 co2_reading = None
             else:
                 co2_reading = int(co2_reading)
-            co2_levels.append(int(co2_reading))
+            co2_levels.append(co2_reading)
 
             temperature = parsed_data[i][2]
             if (temperature == "None" or temperature == None):
@@ -48,11 +48,15 @@ def parse_csv(values):
     return [time_values, co2_levels, temp_levels]
 
 def insert_value(time, co2, temperature):
-    f = open(file_handle, "a")
-    f.write(time + "," + str(co2) + "," + str(temperature) + "\n")
-    f.close()
-    success = True
+    success = "true"
+    try:
+        f = open(file_handle, "a")
+        f.write(time + "," + str(co2) + "," + str(temperature) + "\n")
+        f.close()
+    except IOError:
+        success = "Unable to read file. Permission Denied."
     return success
+
 
 form = cgi.FieldStorage()
 command = form.getfirst("command", "")
