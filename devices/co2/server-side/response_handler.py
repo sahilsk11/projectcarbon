@@ -7,7 +7,7 @@ print("Content-type: application/json\n\n")
 
 file_handle = "data.csv"
 
-log = open("test.log", "a")
+#log = open("test.log", "a")
 
 def parse_csv(values):
     f = open(file_handle, "r")
@@ -30,7 +30,7 @@ def parse_csv(values):
             time_values.append(time_stamp)
 
             co2_reading = parsed_data[i][1]
-            log.write(co2_reading)
+            #log.write(co2_reading)
             if (co2_reading == None or co2_reading == "None"):
                 co2_reading = None
             else:
