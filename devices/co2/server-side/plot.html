@@ -67,7 +67,7 @@
             }
 
             function constructChart(timeValues, co2Levels, tempLevels) {
-                var ctx = document.getElementById('myChart');
+                var ctx = document.getElementById('co2');
                 var type;
                 if (timeValues.length < 5) {
                     type = 'bar';
@@ -82,14 +82,47 @@
                             label: "CO2 Levels (ppm)",
                             data: co2Levels,
                             borderColor: "rgba(0, 0, 0, 0.7)",
-                            backgroundColor: "rgba(0, 0, 0, 0)",
+                            backgroundColor: "rgba(0, 0, 0, 0.7)",
                             pointRadius: 2
-                        },
-                        {
+                        }]
+                    },
+                    options: {
+                        backgroundColor: "blue",
+                        responsive: true,
+                        scales: {
+                            color: "white",
+                            yAxes: [{
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: "CO2 Levels (ppm)"
+                                },
+                                ticks: {
+                                    suggestedMax: 1000,
+                                    beginAtZero: true
+                                }
+                            }],
+                            xAxis: [{
+                                gridLines: {
+                                    display: false
+                                },
+                                scaleLabel: {
+                                    display: true,
+                                }
+                            }]
+                        }
+                    }
+                });
+
+                ctx = document.getElementById('temperature');
+                var myChart1 = new Chart(ctx, {
+                    type: type,
+                    data: {
+                        labels: timeValues,
+                        datasets: [{
                             label: "Temperature (F)",
                             data: tempLevels,
                             borderColor: "rgba(255, 0, 0, 0.7)",
-                            backgroundColor: "rgba(0, 0, 0, 0)",
+                            backgroundColor: "rgba(255, 0, 0, 1)",
                             pointRadius: 2,
                             spanGaps: true
                         }]
@@ -105,6 +138,7 @@
                                     labelString: "CO2 Levels (ppm)"
                                 },
                                 ticks: {
+                                    suggestedMax: 100,
                                     beginAtZero: true
                                 }
                             }],
@@ -124,12 +158,17 @@
     </head>
 
     <body onload="initChart()" class="dark">
-        <h1 class="title-font">CO2 Data</h1>
+        <h1 class="title-font">CO2 and Temperature Data</h1>
         <h3 class="title-font subtitle">Location: Dorm room</h3>
 
         <div class="graph-container">
-            <canvas id="myChart" aria-label="Hello ARIA World" role="img"></canvas>
+            <canvas id="co2" aria-label="Hello ARIA World" role="img"></canvas>
         </div>
+
+        <div class="graph-container">
+            <canvas id="temperature" aria-label="Hello ARIA World" role="img"></canvas>
+        </div>
+        
         <div class="button-group">
             <label class="form-label">How many values to display?</label><br>
             <input id="values" class="value-input"><br><br>
