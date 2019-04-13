@@ -27,17 +27,17 @@
 	padding-top: 50px;
 	position: relative;
 	width: 80%;
-	height: 20% auto;
+	height: 30%;
 	margin: 0px auto;
 }
-
+/*
 @media only screen and (max-width: 800px) {
   .graph-container {
     width: 100%;
     height: auto;
   }
 }
-
+*/
 .button-group {
 	margin: 0px auto;
 	padding-top: 1%;
