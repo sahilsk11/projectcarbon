@@ -86,11 +86,11 @@
                 ctx = document.getElementById('temperature');
                 var temperatureGraph = new Chart(ctx, temperatureGraphData);
 
-                var co2AnalysisGraphData = generateDoughnut();
+                var co2AnalysisGraphData = generateDoughnut(false);
                 ctx = document.getElementById('co2Analysis');
                 var co2AnalysisGraph = new Chart(ctx, co2AnalysisGraphData);
 
-                var tempAnalysisGraphData = generateDoughnut();
+                var tempAnalysisGraphData = generateDoughnut(false);
                 ctx = document.getElementById('tempAnalysis');
                 var tempAnalysisGraph = new Chart(ctx, tempAnalysisGraphData);
             }
@@ -113,7 +113,7 @@
                         layout: {
                             padding: {
                                 top: 20,
-                                bottom: 20
+                                bottom: 20,
                             }
                         },
                         title: {
@@ -150,19 +150,25 @@
                 }
             }
 
-            function generateDoughnut() {
-                var colors = ['rgba(200, 0, 0, 0.8)','rgba(0, 0, 0, 1)','rgba(0, 150, 0, 0.7)',];
+            function generateDoughnut(fullCircle) {
+                var colors = ['rgba(0, 150, 0, 0.7)','rgba(0, 0, 0, 1)','rgba(200, 0, 0, 0.8)'];
+                var type; //defines half circle or full
+                if (fullCircle) {
+                    type = 2;
+                } else {
+                    type = 1;
+                }
                 return {
                     type: 'pie',
                     data: {
                         datasets: [{
-                            data: [33, 33, 100],
+                            data: [100, 33, 33],
                             backgroundColor: colors
                         }],
                         labels: [
-                            'Red',
-                            'Yellow',
-                            'Blue'
+                            'Green',
+                            'Black',
+                            'Red'
                         ]
                     },
                     options: {
@@ -183,6 +189,8 @@
                             position: 'top',
                         },
                         cutoutPercentage: 55,
+                        rotation:Math.PI * type,
+                        circumference:Math.PI * type
                     }
                 }
             }
@@ -190,38 +198,52 @@
     </head>
 
     <body onload="getValueCount()" class="no-margin">
-        <h3 class="title-font">Location: Dorm</h3>
-        <h3 class="title-font">Last Update: unknown</h3>
 
-        <div class="custom-container">
-            <div class="row metric-box">
-                <h3 class="title-font metric-title co2-theme">Carbon Dioxide</h3>
-                <div class="col-4 analysis-container">
-                    <canvas id="co2Analysis" aria-label="Hello ARIA World" role="img"></canvas>
-                </div>
-                <div class="col-8 graph-container">
-                    <canvas id="co2" aria-label="Hello ARIA World" role="img"></canvas>
-                </div>
-            </div>
+        <div class="side-nav">
+            <img src="projectcarbon-white.png" class="side-logo">
+            <p class="title-font side-text">project carbon</p>
         </div>
 
-        <div class="custom-container">
-            <div class="row metric-box">
-                <h3 class="title-font metric-title temp-theme">Temperature</h3>
-                <div class="col-4 analysis-container">
-                    <canvas id="tempAnalysis" aria-label="Hello ARIA World" role="img"></canvas>
-                </div>
-                <div class="col-8 graph-container">
-                    <canvas id="temperature" aria-label="Hello ARIA World" role="img"></canvas>
+        <div class="page-content">
+
+            <div class="floating-nav">
+
+            </div>
+
+            <div class="custom-container">
+                <div class="row metric-box">
+                    <h3 class="title-font metric-title">Carbon Dioxide</h3>
+                    <div class="col-4 analysis-container">
+                        <div class="pie-container">
+                            <canvas id="co2Analysis" aria-label="Hello ARIA World" role="img"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-8 graph-container">
+                        <canvas id="co2" aria-label="Hello ARIA World" role="img"></canvas>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="button-group">
-            <label class="form-label">How many values to display?</label><br>
-            <input id="values" autocomplete="off" class="value-input"><br><br>
-            <button class="btn" onclick="changeChart()">Change</button>
-            <button class="btn" onclick="changeChart(true)">Reset</button>
+            <div class="custom-container">
+                <div class="row metric-box">
+                    <h3 class="title-font metric-title">Temperature</h3>
+                    <div class="col-4 analysis-container">
+                        <div class="pie-container">
+                            <canvas id="tempAnalysis" aria-label="Hello ARIA World" role="img"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-8 graph-container">
+                        <canvas id="temperature" aria-label="Hello ARIA World" role="img"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <label class="form-label">How many values to display?</label><br>
+                <input id="values" autocomplete="off" class="value-input"><br><br>
+                <button class="btn" onclick="changeChart()">Change</button>
+                <button class="btn" onclick="changeChart(true)">Reset</button>
+            </div>
         </div>
     </body>
 </html>
