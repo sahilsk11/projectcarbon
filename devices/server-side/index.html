@@ -5,6 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
 
         <link href="css/organize.css" rel="stylesheet">
         <link href="css/simple-grid.css" rel="stylesheet">
@@ -61,41 +63,50 @@
             }
 
             function parseChartData(xhr, xhrConfig) {
-                var co2Levels;
-                var timeValues;
                 var response = JSON.parse(xhr.responseText);
-                timeValues = response[0];
-                co2Levels = response[1];
-                tempLevels = response[2];
-                constructCharts(timeValues, co2Levels, tempLevels);
+                var timeValues = response[0];
+
+                var CO2Data = {'readings':response[1], 'normalReadingCount':response[3],'highReadingCount':response[4]};
+                var temperatureData = {'readings':response[2], 'normalReadingCount':response[5], 'lowReadingCount':response[6], 'highReadingCount':response[7]};
+
+                constructCharts(timeValues, CO2Data, temperatureData);
             }
 
-            function constructCharts(timeValues, co2Levels, tempLevels) {
+            function constructCharts(timeValues, CO2Data, temperatureData) {
                 var type;
-                Chart.defaults.global.defaultFontFamily = "Source Code Pro";
+                var font = 'Source Code Pro';
+                font = 'Montserrat';
+                Chart.defaults.global.defaultFontFamily = font;
                 if (timeValues.length < 5) {
                     type = 'bar';
                 } else {
                     type = 'line';
                 }
-                var co2GraphData = addLineGraph(type, timeValues, co2Levels, 'Carbon Dioxide', 'CO2 (ppm)', 1000);
-                var ctx = document.getElementById('co2');
-                var co2Graph = new Chart(ctx, co2GraphData);
 
-                var temperatureGraphData = addLineGraph(type, timeValues, tempLevels, 'Temperature', 'Temperature (F)', 100);
-                ctx = document.getElementById('temperature');
-                var temperatureGraph = new Chart(ctx, temperatureGraphData);
+                var co2GraphData = generateLineChartObject(type, timeValues, CO2Data['readings'], 'Carbon Dioxide', 'CO2 (ppm)', 1000); //Last value is suggested max
+                addLineChart(co2GraphData, 'co2');
 
-                var co2AnalysisGraphData = generateDoughnut(false);
-                ctx = document.getElementById('co2Analysis');
-                var co2AnalysisGraph = new Chart(ctx, co2AnalysisGraphData);
+                var temperatureGraphData = generateLineChartObject(type, timeValues, temperatureData['readings'], 'Temperature', 'Temperature (F)', 100);
+                addLineChart(temperatureGraphData, 'temperature');
 
-                var tempAnalysisGraphData = generateDoughnut(false);
-                ctx = document.getElementById('tempAnalysis');
-                var tempAnalysisGraph = new Chart(ctx, tempAnalysisGraphData);
+                var co2AnalysisGraphData = generateDoughnut(false, 0, CO2Data['normalReadingCount'], CO2Data['highReadingCount']);
+                addPieChart(co2AnalysisGraphData, 'co2Analysis');
+
+                var tempAnalysisGraphData = generateDoughnut(false, temperatureData['lowReadingCount'], temperatureData['normalReadingCount'], temperatureData['highReadingCount']);
+                addPieChart(tempAnalysisGraphData, 'tempAnalysis')
             }
 
-            function addLineGraph(type, timeValues, yValues, title, yLabel, suggestedMax) {
+            function addLineChart(lineChartObject, id) {
+                var ctx = document.getElementById(id);
+                var graph = new Chart(ctx, lineChartObject);
+            }
+
+            function addPieChart(pieChartObject, id) {
+                var ctx = document.getElementById(id);
+                var analysisGraph = new Chart(ctx, pieChartObject);
+            }
+
+            function generateLineChartObject(type, timeValues, yValues, title, yLabel, suggestedMax) {
                 return {
                     type: type,
                     data: {
@@ -150,25 +161,28 @@
                 }
             }
 
-            function generateDoughnut(fullCircle) {
-                var colors = ['rgba(0, 110, 0, 0.7)','rgba(0, 0, 0, 1)','rgba(170, 0, 0, 0.8)'];
+            function generateDoughnut(fullCircle, lowReadingCount, normalReadingCount, highReadingCount) {
+                var colors = ['rgba(0, 0, 110, 0.7)','rgba(0, 110, 0, 0.7)','rgba(170, 0, 0, 0.8)'];
                 var type; //defines half circle or full
                 if (fullCircle) {
                     type = 2;
                 } else {
                     type = 1;
                 }
+
+                var caption = calculatePiePercentages(lowReadingCount, normalReadingCount, highReadingCount);
+
                 return {
                     type: 'pie',
                     data: {
                         datasets: [{
-                            data: [100, 33, 33],
+                            data: [lowReadingCount, normalReadingCount, highReadingCount],
                             backgroundColor: colors
                         }],
                         labels: [
-                            'Green',
-                            'Black',
-                            'Red'
+                            'Low Value',
+                            'Normal Value',
+                            'High Value'
                         ]
                     },
                     options: {
@@ -184,15 +198,33 @@
                         },
                         title: {
                             display: true,
-                            text: 'Health',
-                            fontSize: 20,
-                            position: 'top',
+                            text: caption,
+                            fontSize: 15,
+                            position: 'bottom',
                         },
                         cutoutPercentage: 55,
                         rotation:Math.PI * type,
                         circumference:Math.PI * type
                     }
                 }
+            }
+
+            function calculatePiePercentages(lowReadingCount, normalReadingCount, highReadingCount) {
+                var highest;
+                var category;
+                if (lowReadingCount >= normalReadingCount && lowReadingCount >= highReadingCount)
+                {
+                    highest = lowReadingCount;
+                    category = "low"
+                } else if (normalReadingCount >= lowReadingCount && normalReadingCount >= highReadingCount) {
+                    highest = normalReadingCount;
+                    category = "normal";
+                } else {
+                    highest = highReadingCount;
+                    category = "high"
+                }
+                var normal = Math.round((highest / (lowReadingCount + normalReadingCount + highReadingCount)) * 100);
+                return normal + "% " + category + " values"
             }
         </script>
     </head>
@@ -239,7 +271,7 @@
             </div>
 
             <div class="button-group">
-                <label class="form-label">How many values to display?</label><br>
+                <label class="title-font form-label">How many values to display?</label><br>
                 <input id="values" autocomplete="off" class="value-input"><br><br>
                 <button class="btn" onclick="changeChart()">Change</button>
                 <button class="btn" onclick="changeChart(true)">Reset</button>
