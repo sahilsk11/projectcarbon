@@ -18,12 +18,16 @@
 
         <script>
 
-            function sendChartRequest(values) {
+            function sendChartRequest(values, production) {
+                if (production == null) {
+                    production = false;
+                }
                 XHRequest.createRequest({
                     success: parseChartData,
                     params: {
                         command: "getchart",
-                        values: values
+                        values: values,
+                        production: production
                     },
                     url: "response_handler.py"
                 });
@@ -32,13 +36,14 @@
             function getValueCount(override) {
                 var url = new URL(window.location.href);
                 var values = url.searchParams.get("values");
+                var production = url.searchParams.get("production");
                 if (values == null)
                 {
                     values = 1000;
                 } else {
                     document.getElementById("values").value = values;
                 }
-                sendChartRequest(values);
+                sendChartRequest(values, production);
             }
 
             function validateInput(values) {

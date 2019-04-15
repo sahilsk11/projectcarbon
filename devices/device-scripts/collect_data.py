@@ -24,9 +24,9 @@ while True:
         temperature = read_temp.read_data()
         read_temp.append_to_valid(valid_temp, temperature)
         print(current_time, co2, temperature)
-        if elapsed_sec == 30:
+        if elapsed_sec % 30 == 0:
             write_data(current_time, co2, temperature)
-        #if (elapsed_sec == 60):
+        if (elapsed_sec == 60):
             if (temperature == None and len(valid_temp) > 0):
                 temperature = int(sum(valid_temp) / len(valid_temp))
             upload_data.upload(current_time, co2, temperature)

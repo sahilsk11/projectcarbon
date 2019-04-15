@@ -2,7 +2,7 @@ import requests
 import datetime
 
 def upload(current_time_str, co2, temp):
-    r = requests.get('http://projectcarbon.io/devices/co2/server-side/response_handler.py',
+    r = requests.post('http://projectcarbon.io/devices/server-side/response_handler.py',
                       data={"command": "insert", "co2": co2, "time": current_time_str, "temperature": temp,
                             "test": False})
     print("----------------")
@@ -17,7 +17,7 @@ if (__name__ == "__main__"):
     co2 = 1000
     temp = 25
 
-    r = requests.post('http://projectcarbon.io/devices/co2/server-side/response_handler.py',
+    r = requests.post('http://projectcarbon.io/devices/server-side/response_handler.py',
                       data={"command": "insert", "co2": co2, "time": current_time_str, "temperature": temp,
                             "test": True})
     print("----------------")

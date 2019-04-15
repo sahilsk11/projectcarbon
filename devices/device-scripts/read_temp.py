@@ -40,6 +40,8 @@ if (__name__ == "__main__"):
         result = instance.read()
         if result.is_valid():
             print("Last valid input: " + str(datetime.datetime.now()))
+            temperature = result.temperature
+            print("Temperature: %d C" % temperature)
             print("Temperature: %d F" % celsius_to_fahrenheit(result.temperature))
             #print("Humidity: %d %%" % result.humidity)
 

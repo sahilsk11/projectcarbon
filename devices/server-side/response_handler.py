@@ -80,11 +80,14 @@ def insert_value(time, co2, temperature):
 form = cgi.FieldStorage()
 command = form.getfirst("command", "")
 values = form.getfirst("values", "")
+production = form.getfirst("production", "")
 co2 = form.getfirst("co2")
 time = form.getfirst("time")
 temperature = form.getfirst("temperature")
 
 if (command == "getchart"):
+    if (production == "null"):
+        file_handle = "demo.csv"
     data = parse_csv(int(values))
     j = json.dumps(data)
     print(j)
