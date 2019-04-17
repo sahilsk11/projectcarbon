@@ -90,7 +90,7 @@
                     type = 'line';
                 }
 
-                var lightGraphOptions = {'type':'bar', 'xValues':timeValues, 'yValues':lightData, 'yLabel':'Light Intensity', 'suggestedStepSize':40, secondDataSet:motionData, displayXGridLines:false, displayLegend:true};
+                var lightGraphOptions = {'type':'line', 'xValues':timeValues, 'yValues':lightData, 'yLabel':'Light Intensity', 'suggestedStepSize':40, secondDataSet:motionData, displayXGridLines:false, displayLegend:true};
                 var lightGraph = generateLineChartObject(lightGraphOptions);
                 addLineChart(lightGraph, 'light');
 
@@ -99,11 +99,11 @@
                 var temperatureGraphData = generateLineChartObject(tempGraphOptions);
                 addLineChart(temperatureGraphData, 'temperature');
 
-                var lightAnalysisGraphData = generateDoughnut(25);
+                var lightAnalysisGraphData = generateDoughnut(25, 'Hours light was wasted', 'Hours light was on');
                 addPieChart(lightAnalysisGraphData, 'lightAnalysis');
 
                 var tempAnalysisGraphData = generateDoughnut(50);
-                addPieChart(tempAnalysisGraphData, 'tempAnalysis')
+                addPieChart(tempAnalysisGraphData, 'tempAnalysis', 'Heater was wasted for 4 hours', 'Heater was on for 8 hours')
             }
 
             function addLineChart(lineChartObject, id) {
@@ -118,40 +118,41 @@
 
             function generateLineChartObject(lineChartOptions) {
                 return {
-                    type: lineChartOptions['type'],
+                    type: lineChartOptions['type'], //either generates line graph or bar graph
                     data: {
-                        labels: lineChartOptions['xValues'],
+                        labels: lineChartOptions['xValues'], //plots time values on x-axis
                         datasets: [{
-                            data: lineChartOptions['yValues'],
-                            borderColor: "rgba(0, 0, 0, 0.5)",
-                            backgroundColor: "rgba(0, 0, 0, 0.1)",
-                            pointRadius: 1.1,
-                            type: 'line',
-                            label: lineChartOptions['yLabel'],
-                            borderWidth: 1
+                            data: lineChartOptions['yValues'], //plots first dataset y-values
+                            borderColor: "rgba(0, 0, 0, 0.5)", //sets the line color
+                            backgroundColor: "rgba(0, 0, 0, 0.1)", //sets the background color
+                            pointRadius: 1.1, //sets the point size
+                            type: 'line', //used for testing - ignore
+                            label: lineChartOptions['yLabel'], //ads the title to the legend
+                            borderWidth: 1 //sets the line width
                         }, {
-                            data: lineChartOptions['secondDataSet'],
-                            backgroundColor: "rgba(120, 0, 0, 0.7)",
-                            label: 'Motion Detected'
+                            data: lineChartOptions['secondDataSet'], //plots the second dataset
+                            backgroundColor: "rgba(120, 0, 0, 0.7)", //sets the background color
+                            label: 'Motion Detected', //adds the title to the legdn
+                            pointRadius: 0 //removes the points
                         }]
                     },
                     options: {
-                        responsive: true,
+                        responsive: true, //fit to container
                         maintainAspectRatio: false,
                         layout: {
-                            padding: {
+                            padding: { //basic spacing
                                 top: 20,
                                 bottom: 0,
                             }
                         },
                         title: {
-                            display: false,
+                            display: false, //don't need a title so this is ignored
                             text: '',
                             fontSize: 20,
                             position: 'top',
                         },
                         legend: {
-                            display: lineChartOptions['displayLegend'],
+                            display: lineChartOptions['displayLegend'], //shows the legend
                             position: 'top',
                             padding: {
                                 top: 0
@@ -159,21 +160,21 @@
                         },
                         scales: {
                             yAxes: [{
-                                scaleLabel: {
+                                scaleLabel: { //adds the y-axis label
                                     display: true,
-                                    labelString: lineChartOptions['yLabel']
+                                    labelString: lineChartOptions['yLabel'] 
                                 },
-                                ticks: {
+                                ticks: { //used for testing, but generated the y-axis step size
                                     stepSize: lineChartOptions['suggestedStepSize']
                                 }
                             }],
                             xAxes: [{
-                                maxBarThickness: 1.5,
+                                maxBarThickness: 1.5, //this was used to make the horizontal lines
                                 gridLines: {
                                     display: lineChartOptions['displayXGridLines'],
 
                                 },
-                                scaleLabel: {
+                                scaleLabel: { //i forgot what this is
                                     display: true,
                                 },
                             }]
@@ -182,7 +183,7 @@
                 }
             }
 
-            function generateDoughnut(total) {
+            function generateDoughnut(total, onLabel, offLabel) {
                 var colors = ['rgba(0, 0, 120, 0.7)','rgba(0, 0, 0, 0.1)'];
                 var type; //defines half circle or full
                 var caption = calculatePiePercentages();
@@ -195,8 +196,8 @@
                             backgroundColor: colors
                         }],
                         labels: [
-                            'Normal Value',
-                            'High Value'
+                            onLabel,
+                            offLabel
                         ]
                     },
                     options: {
