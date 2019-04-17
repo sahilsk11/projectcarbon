@@ -90,7 +90,7 @@
                     type = 'line';
                 }
 
-                var lightGraphOptions = {'type':'line', 'xValues':timeValues, 'yValues':lightData, 'yLabel':'Light Intensity', 'suggestedStepSize':40, secondDataSet:motionData, displayXGridLines:false, displayLegend:true};
+                var lightGraphOptions = {'type':'line', 'xValues':timeValues, 'yValues':lightData, 'yLabel':'Lights Wasted', 'suggestedStepSize':40, secondDataSet:motionData, displayXGridLines:false, displayLegend:true};
                 var lightGraph = generateLineChartObject(lightGraphOptions);
                 addLineChart(lightGraph, 'light');
 
@@ -123,17 +123,19 @@
                         labels: lineChartOptions['xValues'], //plots time values on x-axis
                         datasets: [{
                             data: lineChartOptions['yValues'], //plots first dataset y-values
-                            borderColor: "rgba(0, 0, 0, 0.5)", //sets the line color
+                            borderColor: "rgba(0, 0, 0, 0.5)",
                             backgroundColor: "rgba(0, 0, 0, 0.1)", //sets the background color
                             pointRadius: 1.1, //sets the point size
                             type: 'line', //used for testing - ignore
-                            label: lineChartOptions['yLabel'], //ads the title to the legend
-                            borderWidth: 1 //sets the line width
+                            borderWidth: 1,
+                            label: 'Light Intensity'
+                            //sets the line width,
                         }, {
                             data: lineChartOptions['secondDataSet'], //plots the second dataset
-                            backgroundColor: "rgba(120, 0, 0, 0.7)", //sets the background color
-                            label: 'Motion Detected', //adds the title to the legdn
-                            pointRadius: 0 //removes the points
+                            backgroundColor: "rgba(130, 0, 0, 0.6)", //sets the background color
+                            pointRadius: 0, //removes the points
+                            label: lineChartOptions['yLabel'], //ads the title to the legend
+                            borderWidth: 1 
                         }]
                     },
                     options: {
