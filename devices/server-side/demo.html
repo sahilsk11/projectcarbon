@@ -1,0 +1,282 @@
+<html>
+    <head>
+        <title>Energy Dashboard</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300" rel="stylesheet">
+
+        <link href="css/organize.css" rel="stylesheet">
+        <link href="css/simple-grid.css" rel="stylesheet">
+
+        <link href="dashboard.png" rel="icon">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="js/XHRequest.js"></script>
+
+        <script>
+
+            function sendChartRequest(values, production) {
+                if (production == null) {
+                    production = false;
+                }
+                if (values == "") {
+                    values = 1000;
+                }
+                XHRequest.createRequest({
+                    success: parseChartData,
+                    params: {
+                        command: "getchart",
+                        values: values,
+                        production: production
+                    },
+                    url: "response_handler.py"
+                });
+            }
+
+            function getValueCount(override) {
+                var url = new URL(window.location.href);
+                var values = url.searchParams.get("values");
+                var production = url.searchParams.get("production");
+                if (values == null)
+                {
+                    values = 1000;
+                } else {
+                    document.getElementById("values").value = values;
+                }
+                sendChartRequest(values, production);
+            }
+
+            function validateInput(values) {
+                if (isNaN(values)) {
+                    return false;
+                }
+                return true;
+            }
+
+            function changeChart(override) {
+                if (override != null) {
+                    window.location = window.location.pathname;
+                } else {
+                    values = document.getElementById("values").value;
+                    if (!validateInput(values)) {
+                        changeChart(true);
+                    } else {
+                        var url = window.location.pathname;
+                        window.location = url + '?values=' + values;
+                    }
+                }
+            }
+
+            function parseChartData(xhr, xhrConfig) {
+                var response = JSON.parse(xhr.responseText);
+                var timeValues = response[0];
+
+                var lightData = response[1];
+                var temperatureData = response[2];
+                var motionData = response[3];
+
+                constructCharts(timeValues, lightData, temperatureData, motionData);
+            }
+
+            function constructCharts(timeValues, lightData, temperatureData, motionData) {
+                var type;
+                var font = 'Source Code Pro';
+                font = 'Montserrat';
+                Chart.defaults.global.defaultFontFamily = font;
+                if (timeValues.length < 5) {
+                    type = 'bar';
+                } else {
+                    type = 'line';
+                }
+
+                var lightGraphOptions = {'type':'bar', 'xValues':timeValues, 'yValues':lightData, 'yLabel':'Light Intensity', 'suggestedStepSize':40, secondDataSet:motionData, displayXGridLines:false, displayLegend:true};
+                var lightGraph = generateLineChartObject(lightGraphOptions);
+                addLineChart(lightGraph, 'light');
+
+                var tempGraphOptions = {'type':type, 'xValues':timeValues, 'yValues':temperatureData, 'yLabel':'Temperature (F)', 'suggestedStepSize':10, secondDataSet:[], displayXGridLines:true, displayLegend:false};
+
+                var temperatureGraphData = generateLineChartObject(tempGraphOptions);
+                addLineChart(temperatureGraphData, 'temperature');
+
+                var lightAnalysisGraphData = generateDoughnut(25);
+                addPieChart(lightAnalysisGraphData, 'lightAnalysis');
+
+                var tempAnalysisGraphData = generateDoughnut(50);
+                addPieChart(tempAnalysisGraphData, 'tempAnalysis')
+            }
+
+            function addLineChart(lineChartObject, id) {
+                var ctx = document.getElementById(id);
+                var graph = new Chart(ctx, lineChartObject);
+            }
+
+            function addPieChart(pieChartObject, id) {
+                var ctx = document.getElementById(id);
+                var analysisGraph = new Chart(ctx, pieChartObject);
+            }
+
+            function generateLineChartObject(lineChartOptions) {
+                return {
+                    type: lineChartOptions['type'],
+                    data: {
+                        labels: lineChartOptions['xValues'],
+                        datasets: [{
+                            data: lineChartOptions['yValues'],
+                            borderColor: "rgba(0, 0, 0, 0.5)",
+                            backgroundColor: "rgba(0, 0, 0, 0.1)",
+                            pointRadius: 1.1,
+                            type: 'line',
+                            label: lineChartOptions['yLabel'],
+                            borderWidth: 1
+                        }, {
+                            data: lineChartOptions['secondDataSet'],
+                            backgroundColor: "rgba(120, 0, 0, 0.7)",
+                            label: 'Motion Detected'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        layout: {
+                            padding: {
+                                top: 20,
+                                bottom: 0,
+                            }
+                        },
+                        title: {
+                            display: false,
+                            text: '',
+                            fontSize: 20,
+                            position: 'top',
+                        },
+                        legend: {
+                            display: lineChartOptions['displayLegend'],
+                            position: 'top',
+                            padding: {
+                                top: 0
+                            }
+                        },
+                        scales: {
+                            yAxes: [{
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: lineChartOptions['yLabel']
+                                },
+                                ticks: {
+                                    stepSize: lineChartOptions['suggestedStepSize']
+                                }
+                            }],
+                            xAxes: [{
+                                maxBarThickness: 1.5,
+                                gridLines: {
+                                    display: lineChartOptions['displayXGridLines'],
+
+                                },
+                                scaleLabel: {
+                                    display: true,
+                                },
+                            }]
+                        }
+                    }
+                }
+            }
+
+            function generateDoughnut(total) {
+                var colors = ['rgba(0, 0, 120, 0.7)','rgba(0, 0, 0, 0.1)'];
+                var type; //defines half circle or full
+                var caption = calculatePiePercentages();
+                var background = 100 - total;
+                return {
+                    type: 'pie',
+                    data: {
+                        datasets: [{
+                            data: [total, background],
+                            backgroundColor: colors
+                        }],
+                        labels: [
+                            'Normal Value',
+                            'High Value'
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        layout: {
+                            padding: {
+                                top: 10
+                            }
+                        },
+                        legend: {
+                            display: false,
+                            position: 'bottom'
+                        },
+                        title: {
+                            display: true,
+                            text: caption,
+                            fontSize: 15,
+                            position: 'bottom',
+                        },
+                        cutoutPercentage: 55,
+                        rotation:3*Math.PI/2 ,
+                        circumference:2 * Math.PI
+                    }
+                }
+            }
+
+            function calculatePiePercentages() {
+                return "15 kW wasted";
+            }
+        </script>
+    </head>
+
+    <body onload="getValueCount()" class="no-margin">
+
+        <div class="side-nav">
+            <img src="projectcarbon-white.png" class="side-logo">
+            <p class="title-font side-text">project carbon</p>
+        </div>
+
+        <div class="page-content">
+
+            <div class="floating-nav">
+
+            </div>
+
+            <div class="custom-container">
+                <div class="row metric-box">
+                    <h3 class="title-font metric-title">Light and Occupancy</h3>
+                    <div class="col-4 analysis-container">
+                        <div class="pie-container">
+                            <canvas id="lightAnalysis" aria-label="Hello ARIA World" role="img"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-8 graph-container">
+                        <canvas id="light" aria-label="Hello ARIA World" role="img"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="custom-container">
+                <div class="row metric-box">
+                    <h3 class="title-font metric-title">Indoor Temperature</h3>
+                    <div class="col-4 analysis-container">
+                        <div class="pie-container">
+                            <canvas id="tempAnalysis" aria-label="Hello ARIA World" role="img"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-8 graph-container">
+                        <canvas id="temperature" aria-label="Hello ARIA World" role="img"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <label class="title-font form-label">How many values to display?</label><br>
+                <input id="values" autocomplete="off" class="value-input"><br><br>
+                <button class="btn" onclick="changeChart()">Change</button>
+                <button class="btn" onclick="changeChart(true)">Reset</button>
+            </div>
+        </div>
+    </body>
+</html>

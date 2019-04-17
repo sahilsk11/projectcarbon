@@ -18,6 +18,7 @@ def parse_csv(values):
     co2_levels = []
     temp_levels = []
     time_values = []
+    motion_values = []
 
     parsed_data = raw_data.split("\n")
     if (parsed_data[-1] == ''):
@@ -63,8 +64,11 @@ def parse_csv(values):
                     normal_temp += 1
             temp_levels.append(temperature)
 
+            motion_reading = parsed_data[i][3]
+            motion_values.append(motion_reading)
+
     #print(time_values)
-    return [time_values, co2_levels, temp_levels, normal_co2, high_co2, normal_temp, low_temp, high_temp]
+    return [time_values, co2_levels, temp_levels, motion_values]
 
 def insert_value(time, co2, temperature):
     success = "true"

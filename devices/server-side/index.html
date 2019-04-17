@@ -5,7 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400" rel="stylesheet">
+
 
 
         <link href="css/organize.css" rel="stylesheet">
@@ -118,8 +119,8 @@
                         labels: timeValues,
                         datasets: [{
                             data: yValues,
-                            borderColor: "rgba(0, 0, 0, 1)",
-                            backgroundColor: "rgba(0, 0, 0, 0.3)",
+                            borderColor: "rgba(0, 0, 0, 0.5)",
+                            backgroundColor: "rgba(0, 0, 0, 0.2)",
                             pointRadius: 2
                         }]
                     },
@@ -167,7 +168,7 @@
             }
 
             function generateDoughnut(fullCircle, lowReadingCount, normalReadingCount, highReadingCount) {
-                var colors = ['rgba(0, 0, 110, 0.7)','rgba(0, 110, 0, 0.7)','rgba(170, 0, 0, 0.8)'];
+                var colors = ['rgba(0, 0, 110, 0.7)','rgba(0, 120, 0, 0.7)','rgba(170, 0, 0, 0.8)'];
                 var type; //defines half circle or full
                 if (fullCircle) {
                     type = 2;

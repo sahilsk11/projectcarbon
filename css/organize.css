@@ -8,19 +8,25 @@
 	font-size: 40px;
 	text-align: center;
 	font-family: 'Montserrat', sans-serif;
-	font-weight: 500;
+	font-weight: 300;
 	padding-left: 5%;
 	padding-right: 5%;
 }
+
 @media only screen and (max-width: 450px) {
   .title {
     font-size: 30px;
   }
 }
 
+.title-spacing {
+	margin-bottom: 0px;
+}
+
 .title-font {
 	font-family: 'Montserrat', sans-serif;
-	font-size: 20px;
+	font-weight: 400;
+	text-align: center;
 }
 
 .link {
@@ -39,9 +45,11 @@
 .logo {
 	position: relative;
 	display: block;
+	margin-top: 0px;
 	margin: 0px auto;
-	width: 40%;
+	width: 30%;
 	max-width: 200px;
+	min-width: 150px;
 }
 
 .section1-icon {
