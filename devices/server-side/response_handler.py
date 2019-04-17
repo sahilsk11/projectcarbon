@@ -64,8 +64,12 @@ def parse_csv(values):
                     normal_temp += 1
             temp_levels.append(temperature)
 
-            motion_reading = parsed_data[i][3]
-            motion_values.append(motion_reading)
+            try:
+                motion_reading = parsed_data[i][3]
+                motion_values.append(motion_reading)
+            except IndexError:
+                pass
+
 
     #print(time_values)
     return [time_values, co2_levels, temp_levels, motion_values]
@@ -90,7 +94,7 @@ time = form.getfirst("time")
 temperature = form.getfirst("temperature")
 
 if (command == "getchart"):
-    if (production == "null"):
+    if (production != "null"):
         file_handle = "demo.csv"
     data = parse_csv(int(values))
     j = json.dumps(data)

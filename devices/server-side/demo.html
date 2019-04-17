@@ -28,7 +28,7 @@
                     params: {
                         command: "getchart",
                         values: values,
-                        production: production
+                        production: production,
                     },
                     url: "response_handler.py"
                 });
@@ -44,7 +44,7 @@
                 } else {
                     document.getElementById("values").value = values;
                 }
-                sendChartRequest(values, production);
+                sendChartRequest(values, true);
             }
 
             function validateInput(values) {
