@@ -19,6 +19,12 @@
   }
 }
 
+.center {
+	text-align: center;
+	margin: 0px auto;
+	display: block;
+}
+
 .title-spacing {
 	margin-bottom: 0px;
 }
@@ -40,6 +46,12 @@
 .subtitle {
 	font-size: 20px;
 	color: black;
+	width: 70%;
+	margin: 0px auto;
+}
+
+.modal-title {
+	width: 90%;
 }
 
 .logo {
@@ -55,14 +67,15 @@
 .section1-icon {
 	position: relative;
 	display: block;
-	left: 0px;
-	right: 0px;
 	margin: 0px auto;
+	margin-top: 5%;
 	width: 70%;
 	max-width: 600px;
 	min-width: 300px;
-	padding-top: 10px;
+	padding-top: 3%;
 	padding-bottom: 3%;
+	border: 1px solid black;
+	box-shadow: 10px 10px grey;
 }
 
 .app-logo {
@@ -77,8 +90,6 @@
 }
 
 .btn {
-	height: 50px;
-	width: 90px;
 	border: none;
 	font-family: 'Source Code Pro', monospace;
 	font-size: 15px;	
@@ -92,16 +103,10 @@
 .black-btn {
 	background-color: black;
 	color: white;
-}
-
-.white-btn {
-	background-color: black;
-	color: white;
-	margin-top: 10%;
+	margin-top: 3%;
 	left: 0px;
 	right: 0px;
-	margin: 0px auto;
-	width: 150px;
+	max-width: 200px;
 	height: 40px;
 }
 
@@ -117,11 +122,31 @@
 }
 
 .black-section {
-	background-color: white;
+	background-color: rgba(0, 0, 0);
+	color: white;
 }
 
-.white {
-	color: black;
+.white-title {
+	color: white;
+}
+
+.parallelogram-container {
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.parallelogram {
+    width: 200vh;
+	height: 200px;
+	transform: skew(30deg);
+    transform: rotate(120deg) skew(30deg);
+    position: absolute;
+    right: -100vh;
+    background-color: rgba(0, 0, 255);
+    z-index: 1;
 }
 
 .about-description-container {
@@ -136,25 +161,46 @@
 }
 
 .description {
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
 	font-size: 20px;
+	padding-top: 5%;
+	padding-bottom: 5%;
+	line-height: 30px;
 }
 
 .products {
 	padding-top: 20px;
+	display: block;
+	margin: 0px auto;
+	text-align: center;
+	max-width: 1000px;
 }
 
 .product {
 	cursor: pointer;
+	box-shadow: 10px 10px grey;
+	border: 1px solid black;
+	margin: 10px;
+	width: 100%;
+	max-width: 300px;
+	display: inline-block;
+	height: 350px;
+	margin-bottom: 30px;
+}
+
+.product:hover {
+	box-shadow: none;
+	transform: translate(5px, 5px);
 }
 
 .product-img {
 	display: block;
-	width: 70%;
+	width: 100%;
 	margin: 0px auto;
 	left: 0px;
 	right: 0px;
-	max-width: 150px;
+	max-width: 300px;
 }
 
 .custom-hr {
@@ -178,6 +224,9 @@
 	text-align: center;
 }
 
+.math-symbol {
+	width: 80px;
+}
 
 /*Modals*/
 /*________________________________________________*/

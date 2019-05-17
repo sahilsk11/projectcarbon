@@ -5,12 +5,11 @@
 
 		<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400|Roboto:300,400" rel="stylesheet">
 
 
 		<title>project carbon</title>
 		<link href="img/logo.png" rel="icon">
-		<link href="css/skeleton.css" rel="stylesheet">
 		<link href="css/normalize.css" rel="stylesheet">
 		<link href="css/organize.css" rel="stylesheet">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -47,6 +46,9 @@
 		<script>
 			function openModal(id) {
 				console.log(id);
+				if (document.getElementById(id) == null) {
+					id = "construction";
+				}
 				document.getElementById(id).style.display = "block";
 			}
 
@@ -62,68 +64,71 @@
 				<h1 class="title title-spacing">project carbon</h1>
 
 				<img src="img/logo.svg" class="logo" alt="">
-				<h4 class="title subtitle">Welcome to the future of college campuses.</h4>
+				<h4 class="title subtitle">quality computer science for all.</h4>
 				<a href="#about"><button class="btn black-btn">Let's go</button></a>
 			</div>
 		</div>
 		<hr>
-		<div id="about" class="section black-section">
-			<h1 class="title section-title white">Running a college isn't easy.</h1>
+		<div id="about" class="section">
+			<h1 class="title section-title">computer science education is tough.</h1>
 			
-			<h4 class="title-font subtitle white">Let's make it efficient.</h1>
-			<img src="img/message.png" class="section1-icon" alt="">
-			<hr class="custom-hr">
+			<h4 class="title-font subtitle white">and boring.</h1>
+			<img src="img/code.png" class="section1-icon" alt="">
 			<div class="about-description-container">
-				<p class="description white">
-					Managing maintenance, cost analysis, construction, and facilities is a full-time job and then some. But Project Carbon is here to help.<br><br>	
-					We offer a suite of sensors to help university buildings gather data about expensive systems, such as HVAC, electricity usage, and water usage. Receive automatic alerts when anomalies are detected, and fix issues proactively instead of reactively.
+				<p class="description">
+					Forget meaningless words on screens. Learn real-world impact.<br><br>
+					Computer science is empowering because of what programmers can use it for. Our mission is to expose the next generation of youth coders to incredible power of coding not through lessons, but through projects.
 				</p>
-				<a href="#solution"><button class="btn white-btn">Let's do it!</button></a>
+				<a href="#solution"><button class="btn black-btn">Let's do it!</button></a>
 			</div>
 		</div>
 		<hr>
 		<div id="solution" class="section">
-			<h1 class="title section-title">The project carbon suite</h1>
-			<h4 class="title-font subtitle">Plug-in intelligence for every part of the college system.</h4>
+			<h1 class="title section-title">There's no better way to learn.</h1>
+			<h4 class="title-font subtitle ">Learn real-world computer science today by forging your own future.</h4>
 			<hr class="custom-hr">
-			<div class="container products">
-				<div class="row">
-					<div class="four columns product" onclick="openModal('co2');">
-						<img src="img/co2.svg" class="product-img" alt="">
-						<h4 class="title-font subtitle">Co2 Sensor</h4>
-					</div>
 
-					<div class="four columns product" onclick="openModal('water');">
-						<img src="img/pipe.svg" class="product-img" alt="">
-						<h4 class="title-font subtitle">Water Sensor</h4>
-					</div>
-
-					<div class="four columns product" onclick="openModal('wayfinding');">
-						<img src="img/wayfinding.svg" class="product-img">
-						<h4 class="title-font subtitle">Wayfinding/Geolocation</h4>
-					</div>
+			<div class="about-description-container">
+				<p class="description">
+					Whether you're an 8th grader learning coding for the first time or a guru here to learn more, our projects are accessible to anyone.<br><br>
+					Pick the one that sounds the coolest and learn real-world computer science today.
+				</p>
+			</div>
+			<div class="products">
+				<div class="product" onclick="openModal('rari');">
+					<img src="img/rari.png" class="product-img" alt="">
+					<h1 class="title-font title">Rari</h1>
+					<h4 class="title-font subtitle modal-title">Self-Driving Vehicle</h4>
 				</div>
 
-				<div class="row br">
-					<div class="twelve columns">
-					</div>
+				<div class="product" onclick="openModal('stovesensor');">
+					<img src="img/stovesensor.png" class="product-img" alt="">
+					<h1 class="title-font title">StoveSensor</h1>
+					<h4 class="title-font subtitle modal-title">Intelligent Stove Sensor</h4>
 				</div>
 
-				<div class="row">
-					<div class="four columns product"  onclick="openModal('light');">
-						<img src="img/light.svg" class="product-img" alt="">
-						<h4 class="title subtitle">Light Sensor</h4>
-					</div>
+				<div class="product" onclick="openModal('wayfinding');">
+					<img src="img/love.png" class="product-img">
+					<h1 class="title-font title">Care4U</h1>
+					<h4 class="title-font subtitle modal-title">Mental Wellness Tracker</h4>
+				</div>
 
-					<div class="four columns product" onclick="openModal('asset');">
-						<img src="img/box.svg" class="product-img" alt="">
-						<h4 class="title-font subtitle">Asset Tracking</h4>
-					</div>
+				<div class="product"  onclick="openModal('light');">
+					<img src="img/smart.png" class="product-img" alt="">
+					<h1 class="title-font title">IoT Space</h1>
+					<h4 class="title subtitle modal-title">Smart-home automation</h4>
+				</div>
 
-					<div class="four columns product" onclick="openModal('dash');">
-						<img src="img/dashboard.svg" class="product-img" alt="">
-						<h4 class="title-font subtitle link">Sensor Dashboard</h4>
-					</div>
+				<div class="product" onclick="openModal('asset');">
+					<img src="img/kiss.png" class="product-img" alt="">
+					<h1 class="title-font title">Date.ly</h1>
+					<h4 class="title-font subtitle modal-title">Find the perfect date spot.</h4>
+				</div>
+
+				<div class="product" onclick="openModal('dash');">
+					<img src="img/tracker.png" class="product-img" alt="">
+					<h1 class="title-font title">All-Star</h1>
+					<h4 class="title-font subtitle modal-title">Sport Team updates</h4>
 				</div>
 			</div>
 		</div>
@@ -134,36 +139,46 @@
 		</footer>-->
 
 		<!--modal-->
-		<div id="co2" class="modal">
+		<div id="rari" class="modal">
 		<!-- Modal content -->
 			<div class="modal-content">
-				<span class="close" onclick="closeModal('co2');">&times;</span>
-				<img src="img/co2.svg" class="product-img" alt="">
-				<h4 class="title subtitle">Co2 Sensor</h4>
+				<span class="close" onclick="closeModal('rari');">&times;</span>
+				<img src="img/rari.png" class="product-img" alt="">
+				<h4 class="title subtitle">Rari</h4>
 				<hr class="custom-hr">
 				<p class="title-font">
-					High carbon dioxide levels are not only correlated with reduced concentration in meeting rooms, but are also a key indicator of "stuffiness" in a room. Use this data to control HVAC systems intelligently.
-				</p>	
+					Rari is an autonomous vehicle prototype. Add the rari kit to any remote controlled vehicle and learn about self-driving technology</b>
+					<br><br>
+					Topics covered:
+					<ul class='title-font center'>
+						<li>Raspberry Pi</li>
+						<li>Machine Learning</li>
+						<li>Neural networks</li>
+						<li>Robotics</li>
+					</ul>
+				</p>
+				<button onclick='window.location.href="../rari"' class='btn black-btn center'>Get started</button>	
 			</div>
 		</div>
 
-		<div id="water" class="modal">
+		<div id="stovesensor" class="modal">
 			<!-- Modal content -->
 			<div class="modal-content">
-				<span class="close" onclick="closeModal('water');">&times;</span>
-				<img src="img/pipe.svg" class="product-img" alt="">
-				<h4 class="title subtitle">ID Security Systems</h4>
+				<span class="close" onclick="closeModal('stovesensor');">&times;</span>
+				<img src="img/stovesensor.png" class="product-img" alt="">
+				<h4 class="title subtitle">StoveSensor</h4>
 				<hr class="custom-hr">
 				<p class="title-font">
 					Monitor water usage down to the room. Actively receive alerts about fluctuations and respond to broken systems proactively.
 				</p>	
 			</div>
 		</div>
-		<div id="wayfinding" class="modal">
+
+		<div id="care" class="modal">
 			<!-- Modal content -->
 			<div class="modal-content">
-				<span class="close" onclick="closeModal('wayfinding');">&times;</span>
-				<img src="img/wayfinding.svg" class="product-img" alt="">
+				<span class="close" onclick="closeModal('care');">&times;</span>
+				<img src="img/love.png" class="product-img" alt="">
 				<h4 class="title subtitle">Water Sensor</h4>
 				<hr class="custom-hr">
 				<p class="title-font">
@@ -171,11 +186,11 @@
 				</p>	
 			</div>
 		</div>
-		<div id="light" class="modal">
+		<div id="space" class="modal">
 			<!-- Modal content -->
 			<div class="modal-content">
-				<span class="close" onclick="closeModal('light');">&times;</span>
-				<img src="img/light.svg" class="product-img" alt="">
+				<span class="close" onclick="closeModal('space');">&times;</span>
+				<img src="img/smart.png" class="product-img" alt="">
 				<h4 class="title subtitle">Wayfinding/Geolocation</h4>
 				<hr class="custom-hr">
 				<p class="title-font">
@@ -183,11 +198,11 @@
 				</p>	
 			</div>
 		</div>
-		<div id="asset" class="modal">
+		<div id="date" class="modal">
 			<!-- Modal content -->
 			<div class="modal-content">
-				<span class="close" onclick="closeModal('asset');">&times;</span>
-				<img src="img/box.svg" class="product-img" alt="">
+				<span class="close" onclick="closeModal('date');">&times;</span>
+				<img src="img/kiss.png" class="product-img" alt="">
 				<h4 class="title subtitle">Asset Tracking</h4>
 				<hr class="custom-hr">
 				<p class="title-font">
@@ -195,15 +210,28 @@
 				</p>	
 			</div>
 		</div>
-		<div id="dash" class="modal">
+		<div id="sport" class="modal">
 			<!-- Modal content -->
 			<div class="modal-content">
-				<span class="close" onclick="closeModal('dash');">&times;</span>
-				<img src="img/dashboard.svg" class="product-img" alt="">
+				<span class="close" onclick="closeModal('sport');">&times;</span>
+				<img src="img/tracker.png" class="product-img" alt="">
 				<h4 class="title subtitle">Sensor Dashboard</h4>
 				<hr class="custom-hr">
 				<p class="title-font">
 					A beautiful dashboard to tie it all together. No fuss with pages of data that make no sense. Our intelligent system will parse data in real-time, and give you the updates you need to know as they come.
+				</p>	
+			</div>
+		</div>
+
+		<div id="construction" class="modal">
+			<!-- Modal content -->
+			<div class="modal-content">
+				<span class="close" onclick="closeModal('construction');">&times;</span>
+				<img src="img/worker.png" class="product-img" alt="">
+				<h4 class="title ">Coming soon!</h4>
+				<hr class="custom-hr">
+				<p class="title-font">
+					This project is under construction!
 				</p>	
 			</div>
 		</div>
