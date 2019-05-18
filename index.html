@@ -59,41 +59,38 @@
 	</head>
 
 	<body class="body">
-		<div class="section">
-			<div class="title-container">
-				<h1 class="title title-spacing">project carbon</h1>
-
-				<img src="img/logo.svg" class="logo" alt="">
-				<h4 class="title subtitle">quality computer science for all.</h4>
-				<a href="#about"><button class="btn black-btn">Let's go</button></a>
-			</div>
+		<div class="title-container">
+			<img class='nav-img' src='img/logo.png'>
+			<h1 class="title-font nav-title">Project Carbon</h1>
 		</div>
-		<hr>
+		<div class="section landing-section">
+	        <div class="heading-container">
+	            <h1 class="title-font landing-title">engaging programming projects for everyone.</h1>
+	            <h3 class="title-font subtitle landing-subtitle">learn coding by forging the future.</h3>
+	            <a href="#about"><button class="btn black-btn fat-btn">Let's go</button></a>
+	            <img src="img/background.png" class="background">
+	        </div>
+		</div>
+
 		<div id="about" class="section">
 			<h1 class="title section-title">computer science education is tough.</h1>
 			
-			<h4 class="title-font subtitle white">and boring.</h1>
+			<h3 class="title-font subtitle center">and boring.</h3>
 			<img src="img/code.png" class="section1-icon" alt="">
-			<div class="about-description-container">
-				<p class="description">
-					Forget meaningless words on screens. Learn real-world impact.<br><br>
-					Computer science is empowering because of what programmers can use it for. Our mission is to expose the next generation of youth coders to incredible power of coding not through lessons, but through projects.
-				</p>
+			<h5 class="title-font subtitle center section-subtitle">Forget meaningless words on screens. Learn real-world impact.</h5>
+			<p class="description">
+				Computer science is empowering because of what programmers can use it for. It's easy to lose that vision when it is not used productively.<br><br>
+				Project Carbon gives step-by-step instructions to pick up the project of your dreams. Stop waiting to forge the future you want and start today.
+			</p>
+			<div class="btn-container">
 				<a href="#solution"><button class="btn black-btn">Let's do it!</button></a>
 			</div>
 		</div>
-		<hr>
-		<div id="solution" class="section">
-			<h1 class="title section-title">There's no better way to learn.</h1>
-			<h4 class="title-font subtitle ">Learn real-world computer science today by forging your own future.</h4>
-			<hr class="custom-hr">
 
-			<div class="about-description-container">
-				<p class="description">
-					Whether you're an 8th grader learning coding for the first time or a guru here to learn more, our projects are accessible to anyone.<br><br>
-					Pick the one that sounds the coolest and learn real-world computer science today.
-				</p>
-			</div>
+		<div id="solution" class="section grey-section">
+			<h1 class="title section-title">Find your next project today.</h1>
+			<h4 class="title-font subtitle center">Pick up <u>any</u> project. All projects are intelligently customized to your skill level.</h4>
+
 			<div class="products">
 				<div class="product" onclick="openModal('rari');">
 					<img src="img/rari.png" class="product-img" alt="">
@@ -119,11 +116,14 @@
 					<h4 class="title subtitle modal-title">Smart-home automation</h4>
 				</div>
 
-				<div class="product" onclick="openModal('asset');">
-					<img src="img/kiss.png" class="product-img" alt="">
+				<!--<div class="product" onclick="openModal('asset');">
+					<!--<img src="img/kiss.png" class="product-img" alt="">
 					<h1 class="title-font title">Date.ly</h1>
 					<h4 class="title-font subtitle modal-title">Find the perfect date spot.</h4>
-				</div>
+					
+				</div>-->
+
+				<img src="img/date.png" class="product">
 
 				<div class="product" onclick="openModal('dash');">
 					<img src="img/tracker.png" class="product-img" alt="">

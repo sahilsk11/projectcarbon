@@ -1,272 +1,1 @@
-.body {
-	position: relative;
-	border: none;
-	margin: 0;
-}
-
-.title {
-	font-size: 40px;
-	text-align: center;
-	font-family: 'Montserrat', sans-serif;
-	font-weight: 300;
-	padding-left: 5%;
-	padding-right: 5%;
-}
-
-@media only screen and (max-width: 450px) {
-  .title {
-    font-size: 30px;
-  }
-}
-
-.center {
-	text-align: center;
-	margin: 0px auto;
-	display: block;
-}
-
-.title-spacing {
-	margin-bottom: 0px;
-}
-
-.title-font {
-	font-family: 'Montserrat', sans-serif;
-	font-weight: 400;
-	text-align: center;
-}
-
-.link {
-	color: #1769ed;
-}
-
-.section-title {
-	padding-top: 5%;
-}
-
-.subtitle {
-	font-size: 20px;
-	color: black;
-	width: 70%;
-	margin: 0px auto;
-}
-
-.modal-title {
-	width: 90%;
-}
-
-.logo {
-	position: relative;
-	display: block;
-	margin-top: 0px;
-	margin: 0px auto;
-	width: 30%;
-	max-width: 200px;
-	min-width: 150px;
-}
-
-.section1-icon {
-	position: relative;
-	display: block;
-	margin: 0px auto;
-	margin-top: 5%;
-	width: 70%;
-	max-width: 600px;
-	min-width: 300px;
-	padding-top: 3%;
-	padding-bottom: 3%;
-	border: 1px solid black;
-	box-shadow: 10px 10px grey;
-}
-
-.app-logo {
-	width: 30%;
-	min-width: 150px;
-	max-width: 350px;
-}
-
-.title-container {
-	padding-top: 10%;
-	text-align: center;
-}
-
-.btn {
-	border: none;
-	font-family: 'Source Code Pro', monospace;
-	font-size: 15px;	
-	border-radius: 5px;
-}
-
-.btn:focus {
-	outline:0;
-}
-
-.black-btn {
-	background-color: black;
-	color: white;
-	margin-top: 3%;
-	left: 0px;
-	right: 0px;
-	max-width: 200px;
-	height: 40px;
-}
-
-.btn:hover {
-	background-color: red;
-}
-
-.section {
-	position: relative;
-	min-height: 100vh;
-	height: auto;
-	border: 0px;
-}
-
-.black-section {
-	background-color: rgba(0, 0, 0);
-	color: white;
-}
-
-.white-title {
-	color: white;
-}
-
-.parallelogram-container {
-	width: 100vw;
-	height: 100vh;
-	overflow: hidden;
-	position: absolute;
-	z-index: -1;
-}
-
-.parallelogram {
-    width: 200vh;
-	height: 200px;
-	transform: skew(30deg);
-    transform: rotate(120deg) skew(30deg);
-    position: absolute;
-    right: -100vh;
-    background-color: rgba(0, 0, 255);
-    z-index: 1;
-}
-
-.about-description-container {
-	margin: 0px auto;
-	left: 0px;
-	right: 0px;
-	padding: 5%;
-	padding-top: 2%;
-	text-align: center;
-	bottom: 10%;
-	max-width: 800px;
-}
-
-.description {
-	font-family: 'Roboto', sans-serif;
-	font-weight: 300;
-	font-size: 20px;
-	padding-top: 5%;
-	padding-bottom: 5%;
-	line-height: 30px;
-}
-
-.products {
-	padding-top: 20px;
-	display: block;
-	margin: 0px auto;
-	text-align: center;
-	max-width: 1000px;
-}
-
-.product {
-	cursor: pointer;
-	box-shadow: 10px 10px grey;
-	border: 1px solid black;
-	margin: 10px;
-	width: 100%;
-	max-width: 300px;
-	display: inline-block;
-	height: 350px;
-	margin-bottom: 30px;
-}
-
-.product:hover {
-	box-shadow: none;
-	transform: translate(5px, 5px);
-}
-
-.product-img {
-	display: block;
-	width: 100%;
-	margin: 0px auto;
-	left: 0px;
-	right: 0px;
-	max-width: 300px;
-}
-
-.custom-hr {
-	width: 75%;
-	border: 0.4px solid black;
-}
-
-.br {
-	height: 20px;
-}
-
-.test {
-	border: 1px solid black;
-}
-
-.footer {
-	position: relative;
-	padding-top: 30px;
-	height: 30px;
-	background-color: black;
-	text-align: center;
-}
-
-.math-symbol {
-	width: 80px;
-}
-
-/*Modals*/
-/*________________________________________________*/
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Content */
-.modal-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  max-height: 500px;
-  overflow: auto;
-  max-width: 700px;
-}
-
-/* The Close Button */
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
+.body {	position: relative;	border: none;	margin: 0;}/*title elements======================================*/@media only screen and (max-width: 450px) {  .title {    font-size: 30px;  }}.title-font {	font-family: 'Montserrat', sans-serif;	font-weight: 400;}.title {	font-size: 35px;	text-align: center;	font-family: 'Montserrat', sans-serif;	font-weight: 400;	padding-left: 5%;	padding-right: 5%;}.landing-title {	font-size: 40px;	text-align: left;	padding-left: 10%;}.subtitle {	font-size: 20px;	color: black;	width: 70%;	margin: 0px auto;}.landing-subtitle {	text-align: left;	margin-left: 10%;}.section-title {	padding-top: 5%;}.section-subtitle {	font-size: 25px;}.modal-title {	width: 90%;}/*image elements==================================*/.logo {	position: relative;	display: block;	margin-top: 0px;	margin: 0px auto;	width: 30%;	max-width: 200px;	min-width: 150px;	padding-bottom: 20px;}.section1-icon {	position: relative;	display: block;	margin: 0px auto;	margin-top: 5%;	width: 70%;	max-width: 600px;	min-width: 300px;	padding-top: 3%;	padding-bottom: 3%;	border: 1px solid black;	box-shadow: 10px 10px grey;	margin-bottom: 5%;}.app-logo {	width: 30%;	min-width: 150px;	max-width: 350px;}/*buttons===========================*/.btn-container {	text-align: center;}.btn {	border: none;	font-family: 'Source Code Pro', monospace;	font-size: 15px;		border-radius: 5px;	text-align: center;	box-shadow: 5px 5px grey;}.btn:focus {	outline:0;}.btn:hover {	background-color: red;}.black-btn {	background-color: black;	color: white;	margin-top: 3%;	max-width: 200px;	height: 40px;	text-align: center;}.fat-btn {	margin-top: 50px;	width: 300px;	height: 50px;	font-size: 20px;	background-color: #262626;	margin-left: 10%;}.btn:hover {	box-shadow: none;	transform: translate(5px, 5px);	background-color: black;	color: rgb(200, 200, 200);}/*sections*/.section {	position: relative;	min-height: 100vh;	height: auto;	border: 0px;}.landing-section {	background-image: url(../img/background.png);	background-size: 50%;	background-repeat: no-repeat;	background-position: 95% center;	background-color: rgba(0, 0, 0, 0.05);}/*other*/.heading-container {    padding-top: 30vh;    left: 10px;    position: absolute;    width: 50%;    min-width: 560px;}.description {	width: 70%;	margin: 0px auto;	display: block;	font-family: 'Roboto', sans-serif;	font-weight: 300;	font-size: 20px;	padding-top: 2%;	padding-bottom: 1%;	line-height: 30px;	text-align: center;}.products {	padding-top: 20px;	display: block;	margin: 0px auto;	text-align: center;	max-width: 1000px;}.product {	cursor: pointer;	box-shadow: 10px 10px grey;	border: 1px solid black;	margin: 10px;	width: 100%;	max-width: 300px;	display: inline-block;	height: 350px;	margin-bottom: 30px;	border-radius: 10px;}.product:hover {	box-shadow: none;	transform: translate(5px, 5px);}.product-img {	display: block;	width: 100%;	margin: 0px auto;	left: 0px;	right: 0px;	max-width: 300px;}.custom-hr {	width: 75%;	border: 0.4px solid black;}.br {	height: 20px;}.test {	border: 1px solid black;}.footer {	position: relative;	padding-top: 30px;	height: 30px;	background-color: black;	text-align: center;}.center {	text-align: center;	margin: 0px auto;	display: block;}/*Modals*//*________________________________________________*/.modal {  display: none; /* Hidden by default */  position: fixed; /* Stay in place */  z-index: 1; /* Sit on top */  padding-top: 100px; /* Location of the box */  left: 0;  top: 0;  width: 100%; /* Full width */  height: 100%; /* Full height */  overflow: auto; /* Enable scroll if needed */  background-color: rgb(0,0,0); /* Fallback color */  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */}/* Modal Content */.modal-content {  background-color: #fefefe;  margin: auto;  padding: 20px;  border: 1px solid #888;  width: 80%;  max-height: 500px;  overflow: auto;  max-width: 700px;}.title-container {	position: absolute;	height: 80px;	width: 100%;}.nav-img {	height: 100%;	padding-left: 60px;}.nav-title {	color: black;	font-size: 30px;	text-align: left;	display: inline-block;	position: absolute;	top: 0px;	left: 150px;	font-weight: 400;}.background {	display: none;}@media only screen and (max-width: 1105px) {	.landing-section {		background-image: none;	}	.landing-subtitle {		text-align: center;		display: block;		width: auto;		margin-left: 0px;	}	.landing-title {		text-align: center;		padding-left: 0px;		width: 700px;		max-width: 80%;		min-width: 500px;		margin: 0px auto;		display: block;		padding-bottom: 20px;	}	.heading-container {		padding-top: 20vh;		position: relative;		margin: 0px auto;		text-align: center;		display: block;		width: 100%;		left: 0px;		min-width: auto;	}	.fat-btn {		margin-left: 0px;	}	.nav-img {		padding-left: 10px;	}	.nav-title {		left: 100px;	}	.background {		padding-top: 8%;		display: block;		margin: 0px auto;		max-width: 600px;		width: 80%;		min-width: 500px;	}}/* The Close Button */.close {  color: #aaaaaa;  float: right;  font-size: 28px;  font-weight: bold;}.close:hover,.close:focus {  color: #000;  text-decoration: none;  cursor: pointer;}
