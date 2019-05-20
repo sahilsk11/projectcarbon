@@ -5,7 +5,7 @@
 
 		<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400|Roboto:300,400" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400|700" rel="stylesheet">
 
 
 		<title>project carbon</title>
@@ -72,140 +72,115 @@
 	        </div>
 		</div>
 
-		<div id="about" class="section">
-			<h1 class="title section-title">computer science education is tough.</h1>
-			
-			<h3 class="title-font subtitle center">and boring.</h3>
-			<img src="img/code.png" class="section1-icon" alt="">
-			<h5 class="title-font subtitle center section-subtitle">Forget meaningless words on screens. Learn real-world impact.</h5>
-			<p class="description">
-				Computer science is empowering because of what programmers can use it for. It's easy to lose that vision when it is not used productively.<br><br>
-				Project Carbon gives step-by-step instructions to pick up the project of your dreams. Stop waiting to forge the future you want and start today.
-			</p>
-			<div class="btn-container">
-				<a href="#solution"><button class="btn black-btn">Let's do it!</button></a>
+		<div id="about" class="section about-section">
+			<div class="description-container">
+				<h1 class="title-font title">it's time to learn coding differently.</h1>
+				<img src="img/code.png" class="description-img">
+				<p class="description">
+					<strong class="center">Move past meaningless syntax.</strong><br><br>
+					Computer science is more than a skillset: it's a creative outlet to build the future you want to. Unfortunately, programming classes and courses never show you how to <u>build</u> that future.
+					<br><br>
+					Project Carbon allows young coders to explore the creative side of computer science. Instead of teaching students how to code, we encourage them to work on projects, and learn appropriate tools to bring their wildest dreams to life.
+				</p>
+			</div>
+
+			<div class="black-section">
+				<h1 class="title-font title">not your average coding academy.</h1>
+				<h3 class="title-font subtitle">Go beyond learning.</h3>
+				<div class="about-bar">
+					<div class="about-obj first-obj">
+						<h3 class="subtitle"><strong>learn</strong></h3>
+						<img src="img/data.png" class="about-img">
+						<p class="about-description">
+							Follow step-by-step instruction to build the project of your dreams.
+						</p>
+					</div>
+					<div class="about-obj second-obj">
+						<h3 class="subtitle"><strong>build</strong></h3>
+						<img src="img/hammer.png" class="about-img">
+						<p class="about-description">
+							Start making impact from day one. Jump straight into building.
+						</p>
+					</div>
+					<div class="about-obj third-obj">
+						<h3 class="subtitle"><strong>change</strong></h3>
+						<img src="img/worldwide.png" class="about-img">
+						<p class="about-description">
+							Our goal is to empower you to use programming for more.
+						</p>
+					</div>
+				</div>
 			</div>
 		</div>
 
 		<div id="solution" class="section grey-section">
-			<h1 class="title section-title">Find your next project today.</h1>
-			<h4 class="title-font subtitle center">Pick up <u>any</u> project. All projects are intelligently customized to your skill level.</h4>
+			<h1 class="title section-title">start building the future today.</h1>
+			<h4 class="title-font subtitle center">Choose any project to get started. All are automatically customized to your skill level.</h4>
 
 			<div class="products">
-				<div class="product" onclick="openModal('rari');">
-					<img src="img/rari-card.png" class="product-img">
+				<div class="product">
+					<div class="product-img-wrapper">
+						<img src="img/rari-graphic.png" class="product-img">
+					</div>
+					<div class="product-description">
+						<h3 class="title center">rari</h3>
+						<p class="description center">
+							self-driving cars for all skill levels.
+						</p>
+						<button class="btn black-btn" onclick="openModal('rari');">learn more</button>
+					</div>
 				</div>
 
-				<div class="product" onclick="openModal('stovesensor');">
-					<img src="img/stovesensor-card.png" class="product-img">
+				<div class="product">
+					<div class="product-img-wrapper">
+						<img src="img/tracker1.png" class="product-img">
+					</div>
+					<div class="product-description">
+						<h3 class="title center">All-star</h3>
+						<p class="description center">
+							build a custom sports tracker.
+						</p>
+						<button class="btn black-btn about-btn" onclick="openModal('construction');">learn more</button>
+					</div>
 				</div>
 
-				<div class="product" onclick="openModal('wayfinding');">
-					<img src="img/care-card.png" class="product-img">
-				</div>
-
-				<div class="product"  onclick="openModal('light');">
-					<img src="img/smart-card.png" class="product-img">
-				</div>
-
-				<div class="product" onclick="openModal('asset');">
-					<img src="img/date.png" class="product-img">
-				</div>
-
-
-				<div class="product" onclick="openModal('dash');">
-					<img src="img/tracker-card.png" class="product-img">
+				<div class="product">
+					<div class="product-img-wrapper">
+						<img src="img/smart1.png" class="product-img">
+					</div>
+					<div class="product-description">
+						<h3 class="title center">IoT Space</h3>
+						<p class="description center">
+							smart home tech for all skill levels.
+						</p>
+						<button class="btn black-btn" onclick="openModal('construction');">learn more</button>
+					</div>
 				</div>
 			</div>
 		</div>
 
-		<!--<footer class="footer">
-			<p class="title-font white">Interested? I'm looking for members!</p>
-			<a class="title-font link" href="mailto:projectcarbon.io@gmail.com">projectcarbon.io@gmail.com</a>
-		</footer>-->
+		<section class='stay-in-touch'>
+			<h1 class='title-font center'>Interested in contributing?</h1>
+
+			<a href='https://github.com/sahilsk11/projectcarbon' target='_blank'><img class='git' src='img/git.png'></a>
+
+			<div class='footer'>
+				<p class='title-font'><a class='footer-text' href='mailto:projectcarbon.io@gmail.com'>projectcarbon.io@gmail.com</a></p>
+			</div>
+		</section>
 
 		<!--modal-->
 		<div id="rari" class="modal">
 		<!-- Modal content -->
 			<div class="modal-content">
 				<span class="close" onclick="closeModal('rari');">&times;</span>
-				<img src="img/rari.png" class="product-img" alt="">
-				<h4 class="title subtitle">Rari</h4>
+				<img src="img/rari-graphic.png" class="modal-img" alt="">
 				<hr class="custom-hr">
+				<h1 class="title title-font modal-title">Rari</h1>
 				<p class="title-font">
-					Rari is an autonomous vehicle prototype. Add the rari kit to any remote controlled vehicle and learn about self-driving technology</b>
-					<br><br>
-					Topics covered:
-					<ul class='title-font center'>
-						<li>Raspberry Pi</li>
-						<li>Machine Learning</li>
-						<li>Neural networks</li>
-						<li>Robotics</li>
-					</ul>
+					Rari is an autonomous vehicle prototype. Add the rari kit to any remote controlled vehicle and learn about self-driving technology.
 				</p>
-				<button onclick='window.location.href="../rari"' class='btn black-btn center'>Get started</button>	
-			</div>
-		</div>
-
-		<div id="stovesensor" class="modal">
-			<!-- Modal content -->
-			<div class="modal-content">
-				<span class="close" onclick="closeModal('stovesensor');">&times;</span>
-				<img src="img/stovesensor.png" class="product-img" alt="">
-				<h4 class="title subtitle">StoveSensor</h4>
-				<hr class="custom-hr">
-				<p class="title-font">
-					Monitor water usage down to the room. Actively receive alerts about fluctuations and respond to broken systems proactively.
-				</p>	
-			</div>
-		</div>
-
-		<div id="care" class="modal">
-			<!-- Modal content -->
-			<div class="modal-content">
-				<span class="close" onclick="closeModal('care');">&times;</span>
-				<img src="img/love.png" class="product-img" alt="">
-				<h4 class="title subtitle">Water Sensor</h4>
-				<hr class="custom-hr">
-				<p class="title-font">
-					Keep track of population density and locations of guests (or visitors) with active geolocation.
-				</p>	
-			</div>
-		</div>
-		<div id="space" class="modal">
-			<!-- Modal content -->
-			<div class="modal-content">
-				<span class="close" onclick="closeModal('space');">&times;</span>
-				<img src="img/smart.png" class="product-img" alt="">
-				<h4 class="title subtitle">Wayfinding/Geolocation</h4>
-				<hr class="custom-hr">
-				<p class="title-font">
-					Smart light systems that detect when residents are in the room and automatically conserve energy based on usage.
-				</p>	
-			</div>
-		</div>
-		<div id="date" class="modal">
-			<!-- Modal content -->
-			<div class="modal-content">
-				<span class="close" onclick="closeModal('date');">&times;</span>
-				<img src="img/kiss.png" class="product-img" alt="">
-				<h4 class="title subtitle">Asset Tracking</h4>
-				<hr class="custom-hr">
-				<p class="title-font">
-					Logisitics run campuses. Find where packages are being transported in real-time, including deliveries to dining courts and residence halls.
-				</p>	
-			</div>
-		</div>
-		<div id="sport" class="modal">
-			<!-- Modal content -->
-			<div class="modal-content">
-				<span class="close" onclick="closeModal('sport');">&times;</span>
-				<img src="img/tracker.png" class="product-img" alt="">
-				<h4 class="title subtitle">Sensor Dashboard</h4>
-				<hr class="custom-hr">
-				<p class="title-font">
-					A beautiful dashboard to tie it all together. No fuss with pages of data that make no sense. Our intelligent system will parse data in real-time, and give you the updates you need to know as they come.
-				</p>	
+				<button onclick='window.location.href="http://rari.projectcarbon.io/learning-modules/docusaurus/website/build/doc-website/docs/welcome/"' class='btn black-btn center'>Get started</button>	
 			</div>
 		</div>
 
@@ -213,10 +188,10 @@
 			<!-- Modal content -->
 			<div class="modal-content">
 				<span class="close" onclick="closeModal('construction');">&times;</span>
-				<img src="img/worker.png" class="product-img" alt="">
-				<h4 class="title ">Coming soon!</h4>
+				<img src="img/worker.png" class="modal-img" alt="">
+				<h1 class="title modal-title title-font">Coming soon!</h1>
 				<hr class="custom-hr">
-				<p class="title-font">
+				<p class="title-font center">
 					This project is under construction!
 				</p>	
 			</div>
