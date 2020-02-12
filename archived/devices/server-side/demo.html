@@ -23,7 +23,7 @@
                 if (values == "") {
                     values = 1000;
                 }
-                XHRequest.createRequest({
+                /*XHRequest.createRequest({
                     success: parseChartData,
                     params: {
                         command: "getchart",
@@ -31,7 +31,9 @@
                         production: production,
                     },
                     url: "response_handler.py"
-                });
+                });*/
+                const data = [["1:07:13 PM", "1:12:13 PM", "1:17:13 PM", "1:22:13 PM", "1:27:13 PM", "1:32:13 PM", "1:37:13 PM", "1:42:13 PM", "1:47:13 PM", "1:52:13 PM", "1:57:13 PM", "2:02:13 PM", "2:07:13 PM", "2:12:13 PM", "2:17:13 PM", "2:22:13 PM", "2:25:13 PM", "2:27:13 PM", "2:32:13 PM", "2:37:13 PM", "1:07:13 PM", "1:12:13 PM", "1:17:13 PM", "1:22:13 PM", "1:27:13 PM", "1:32:13 PM", "1:37:13 PM", "1:42:13 PM", "1:47:13 PM", "1:52:13 PM", "1:57:13 PM", "2:02:13 PM", "2:07:13 PM", "2:12:13 PM", "2:17:13 PM", "2:22:13 PM", "2:25:13 PM", "2:27:13 PM", "2:32:13 PM", "2:37:13 PM"], [100, 0, 0, 0, 100, 100, 100, 100, 100, 100, 0, 0, 0, 100, 100, 100, 100, 0, 0, 0, 100, 0, 0, 0, 100, 100, 100, 100, 100, 100, 0, 0, 0, 100, 100, 100, 100, 0, 0, 100], [75, 75, 76, 77, 82, 75, 74, 70, 68, 68, 65, 63, 66, 70, 70, 70, 70, 72, 75, 75, 75, 75, 76, 77, 82, 75, 74, 70, 68, 68, 65, 63, 66, 70, 70, 70, 70, 72, 75, 75], ["0\r", "0\r", "0\r", "0\r", "0\r", "0\r", "0\r", "100\r", "100\r", "100\r", "0\r", "0\r", "0\r", "0\r", "0\r", "100\r", "100\r", "0\r", "0\r", "0\r", "0\r", "0\r", "0\r", "0\r", "0\r", "0\r", "0\r", "100\r", "100\r", "100\r", "0\r", "0\r", "0\r", "0\r", "0\r", "100\r", "100\r", "0\r", "0\r", "0"]]
+                parseChartData(data)
             }
 
             function getValueCount(override) {
@@ -68,8 +70,8 @@
                 }
             }
 
-            function parseChartData(xhr, xhrConfig) {
-                var response = JSON.parse(xhr.responseText);
+            function parseChartData(response, xhr, xhrConfig) {
+                //var response = JSON.parse(xhr.responseText);
                 var timeValues = response[0];
 
                 var lightData = response[1];
